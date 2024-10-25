@@ -1,5 +1,5 @@
 # 2-8-24[Docker]
-- In vm's autoscaling happens very very slow end users get a some sort of failures
+- In vm's autoscaling happens very very slow end users get a some sort of failures while accessing the app
 - Rather than running app in server go for containrization scaling happend much faster
 - In container all the things packed and just run the packge 
 
@@ -24,16 +24,16 @@ Purely talks about application perspective
   - It solves the problems of hosting app on physical machines but problem with vm's are it's size of the machine becaue each and every machine has dedicated OS
 
   - It causes app startup takes time
-  - Scaling issues[compared to better lot better than physical machines]
+  - Scaling issues[lot better than physical machines]
 
 
 - Containrization is another type of virtualzation it is s/w level vurtualization
   - containers does not have dedicated os it uses host OS has readonly copy to run the containers
   - each container has bare minimum OS
-  - Becuase size of containers weight scaling and booy up happens on the fly
+  - Becuase size of containers weight scaling and boot up happens on the fly
   - Effective resource utilization
   - Containers has used shared resources of host machines[migration becomes very easy]
-  - But security point of vm's gives strong securty than containers because of virtualzation
+  - But security point of vm's gives strong security than containers because of virtualzation
   - containers are immutable [we build from scratch]
 
 - This evolution form physical--->vm--->container is for maintainning stateless app
@@ -46,7 +46,7 @@ Purely talks about application perspective
 
 **Mutability & Immutability**
 ***Disadvantages with Mutability***
-- I can apply config on one vmand another vm forget that's endup with troubleshooting .........
+- I can apply config on one vm and another vm forget that's endup with troubleshooting .........
 ***Advantages with Immutability***
 - consistency
 
@@ -60,7 +60,7 @@ earlier k8s user docker as CRI for k8s like
 
 k8s ---> docker bin ---> docker service ---> containerd
 
-Later they remove docker as runtime they, docker is not reuired to run containers containerd is enough why do we need to maintain complete docker ecosystem that's why they remove docker from k8s eco- system
+Later they remove docker as runtime they, docker is not required to run containers containerd is enough why do we need to maintain complete docker ecosystem that's why they remove docker from k8s eco- system
 
 container is a just a process core feature of linux they just done the isolation
 
@@ -99,9 +99,163 @@ package it simple run anywhere you want
 
 which is my bad
 
-- I did run some thing one machine same thing did on another machine try to do automation while running automation Iwent break something 
+- I did run some thing one machine same thing did on another machine try to do automation while running automation I went break something 
 
 - containers are ephemeral[We|can't|expect|how|much|time|they|live]
 
 # 6-8-2024
+
+container security
+image security
+containers are meant for stateless app
+shared files systems are slow[There|is|no|success|rate|of|fs]
+Why do we need fs
+life cycle of container
+
+# 7-8-2024
+
+docker history <image>
+
+container is nothing but running a process in the os it is no difference by the way
+
+docker run = docker create + docker init + docker start
+
+docker inpsect gives the low level info of the container
+
+can you please explain docker build context how it is happend
+
+
+The challenges with container mainly is networking and storage
+
+In contaienrs one containers running on one node another on anther nodes sharing storage b/w containers is very costly 
+When it comes to the k8s k8s has it own wrapper around containers the storage mounting is ease[one|container|is|writing|another|reading]
+Shared storage is not succeede in the market
+
+That is main essense of understanding
+
+What makes k8s makes better than docker swarm
+k8s intriduces a POD
+
+# 8-8-2024
+
+In pod N/W and Storage are sharable where as in containers are different
+
+Discovery is quite challenge in container world but pod makes very easy the 2 containers communicate each other via localhost
+but in containers you're depends on external n/w latency higher
+
+[kubectl|helm|terraform|ansible|jenkins|k9s] ---> all are client [Kube|API|Server]
+
+pod is a smallest deployable unit
+
+
+ReplicaSet[Maintains|stable|set|of|relicas|at|any|time]
+
+How ReplicaSet Konws this pod belongs to particular replicas by using pod has labels and replicaset has labels
+
+**Execrsie**
+- create a rs with 3 pods
+- create pod with same labels that rs pod have
+- observe the behavious of that pod
+
+
+always maintain unique labels
+
+kubectl api-resources
+
+# 9-8-2024
+
+Every pod gets unique ip address
+
+How this ip address was managed in k8s
+
+crashloopback = container is dead or failed and the same container restarted again and again
+
+Every Pod has one pause-container pod is self is a container that id pause container
+
+pause container is a first created to host the container
+
+it is going to reserve the n/w ns and all the containers created next to the pause container it is going to attach all the containers attached to the particualr n/w ns
+
+
+`Different Phases of Pod life Cycle`
+
+- Pending[unable|to|find|resources]
+- Running[all|resources|workig]
+- Succeeded[all|containers|are|terminated|successfully|and|will|not|restarted]
+- Failed[one|of|the|container|existed|wiht|non-zero]
+- Unkonwn[some|of|the|reason|pod|state|is|updated]
+
+**Architecure of K8s**
+
+API Server understand incoming request it is going to forward appropriate targets
+It acts as a reverse proxy here
+
+
+`apiserver` takes your request 
+
+- Authentication checks the identity 
+- Authrizates
+- Validates the request
+- single entry for your request
+- updates the request config into etcd
+
+`Schduler`
+
+- The purpose Scheduler is `pod` placement
+- Takes request from API server
+- Get the Node stastics from API server
+- Runs the algorithm[filtering|scoring|onnodes] based on the constraints finds best fit node
+- Handovers the rsponse back to the `APIServer`
+- `APIServer` updates the schdules config in etcd
+
+`etcd`
+- It is a key-value database it stores the complete cluster configuration
+- HA
+
+`control manager`
+
+`cloud control manager`
+controller for creating LB,instances,security group
+
+
+`kubelet`
+- kubelet is a agent it takes instructions from the `APIServer`
+- According to the instructions it create and update the pod status back to the `APIServer`
+- It is a deamon service
+
+`kube-proxy`
+
+
+ReplicaSet is a configuration
+ReplicationController configuration is maintained by
+
+
+Labels and selectors are used to map 2 different Objects the k8s
+
+isolating pods from rs just remove labels of pods
+
+
+some of the values are mutable[can|be|changed] and immutable[cannot|changed]
+
+`Annotations` are used to pass supplement info a pod which is not effect execution of a pod
+
+Through annotations we attach metadata 
+
+`PodDeletionCost` using this annotation which pod get's deleted when downscaling was happend
+
+`[[[container]pod]rs]deployment`
+- pod is a wrapper around the containers
+- replica set is a wrapper around the pods
+- Deployment is a wrapper around rs
+
+# 10-8-24
+
+services
+
+`clusterip` `nodeport` `loadbalancer` `external name` `headless`
+
+k8s CNI[calico|cilium|vpc|weavenet|flannel]
+
+Extername is a cname records
+
 
