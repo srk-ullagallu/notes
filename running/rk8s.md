@@ -256,6 +256,251 @@ services
 
 k8s CNI[calico|cilium|vpc|weavenet|flannel]
 
-Extername is a cname records
+Externalname is a cname records
+
+# 12-8-2024
+
+build docker image that prints hostname
+
+echo "Hello from $(hostname)" > /usr/share/nginx/html/index.html
+
+--image=docker.io/rkalluru/debug
+
+`configuration management` How can you manage configuration in k8s
+
+Passing configuration through env variable a pain to pass 10 values or more
+
+`configmap` decouple the configuration from pod statement pass once central place is configmap
+- config is used to mount complete file as a volume
+
+`secrets` in k8s no use it is a base64 encoding easy decode the secrets
+To deal with secrets using HV
+
+Yes, in Kubernetes, when you update a ConfigMap or Secret, the changes do not automatically propagate to the running pods. To apply the changes, you need to restart the pods that depend on the updated ConfigMap or Secret. 
+
+Here are a few ways to restart the pods:
+
+1. **Delete the Pods**: Kubernetes will automatically recreate the pods, pulling in the latest ConfigMap or Secret changes.
+   ```bash
+   kubectl delete pod <pod-name>
+   ```
+   Or to restart all pods in a deployment:
+   ```bash
+   kubectl rollout restart deployment <deployment-name>
+   ```
+
+2. **Change Deployment Spec**: Editing the deployment by updating an annotation (e.g., add a timestamp) will trigger a rolling update, causing pods to restart with the updated configuration.
+
+3. **Use `kubectl rollout restart`**: This command will restart all pods in a deployment.
+   ```bash
+   kubectl rollout restart deployment <deployment-name>
+   ```
+
+`Resource Management`
+
+offere 3 things
+- cpu
+- memory
+- hugepages
+
+requests[guarantee] for resources 
+limits[no|gurantee] for resources if resources are avialable it will consume other wise it won't[it is just a bonus]
+
+1 vcpu = 1000 milli cores
+0.1[fractional] 0r 100m are same
+
+Resource Quotas easy to organize the efficiently resources by admin
+Based on requirement admin allocate particular compute capacity to the ns
+
+# 13-8-2024
+
+namespace level quotas and limits
+
+based on prority of pods can we apply resource quotas
+
+`security` 
+
+`RBAC` Wheather the particular have right access to do this job or not
+K8s does not provide any authentication
+
+`Role`[ns level]
+`RoleBinding`
+`ClusterRole`[cluster level]
+`CLusterRoleBinding`
+
+`SA`
+
+`Cloud Trail` Monitoring each and everything happend in the aws account[everything tracked by here]
+
+`Role` is `identity` in `amazon` same thing k8s `service account` is a `identity`
+
+By defaut every ns comes with one default `service account`
+
+Role binding | Cluster Role Binding in k8s attach Role|Cluster Role to identiy wheather it is a ServiceAccount | AWS IAM Users|Roles|Groups
+
+In k8s Objects are catagorized into multiple API's
+
+
+In k8s cluster every pod can talk to each other there is restriction however i want to start controlling that
+
+based on lebels and ip addresses
+
+There are 2 types of traffic
+- ingresss[incoming]
+- egress[outgoing]
+
+OSI is a fundamental communication layers how to 2 different computers talk each other
+
+The layers happends in `bits` is a `physical Layer`
+`frames`  `data link Layer` some sort of identification through MAC address
+
+It is happening in the `packet level`  `Network Layer`
+
+`Segements` security groups TCP,UDP `Transport` end to end connection
+
+Nginx is a layer 7 software which is understands the request /api /transaction or app.google.com drive.google.com
+
+It understanding the request `Layer7` is a content aware it is not dealing with contnent non-aware proxy
+
+Contenet non-aware is `Layer4`
+
+ingrees:
+ - from:
+    - ipBlock:
+    - namespaceSelector:
+    - podSelector:
+logicl OR ipBlock or namespaceSelector or podSelector[any one of the condition satisfy]
+
+Network Policy with VPC CNI
+
+# 14-8-24
+
+GO do addons VPC CNI edit and add the network policy true
+
+Now tou wanted to have method level control also `service mesh` comes in to picture istio one of the famous
+
+`Observability` what is happening how many requests are coming and perforamce 
+
+what is privileged container
+
+security context for a pod or container
+
+I'm not able to recall
+
+# 19-8-24
+
+pod security standards workshop by amazon
+
+To analyze our k8s cluster good or bad we have multiple tools kubeaudit
+
+
+`Redinness` is container ready to accept traffic or not
+`Liveness` Wheather container running or not
+
+let me give a try
+
+# 20-8-24
+
+HPA[adding pods][stateless]
+
+VPA[increase the resources][stateful]
+
+
+kubectl get hpa --watch
+
+
+`KEDA`
+
+
+# 21-8-24[advance|Scheduling]
+
+
+Scheduler is responsible for find right node to run this pod
+
+nodeSelector
+
+affinity[liking|attaracting]
+anti-affinity[disliking|repelling]
+
+
+RequiredDuringSchedulingIngnoredDuringExecution[must|and|should]
+PrefferredDuringSchedulingIngnoredDuringExecution[If|matching|node|was|not|found|still|want|scheduling]
+
+I don't want run that pods on a particular node or i want run particular workloads on particular nodes
+I want schedule but exclusively choose which pods to schedule
+
+
+
+Taints
+Tolerations
+
+Higher Precedence
+
+# 22-8-24[storage]
+# 23-8-24
+- cluster add ons
+- roboshop deployment
+
+# 26-8-24
+- Helm
+
+# 27-8-24
+
+# 28-8-24
+- vault
+
+helm repo add external-secrets https://charts.external-secrets.io
+helm install external-secrets external-secrets/external-secrets
+
+SecretStrore for every ns
+CLusterSecretStore for all ns in the cluster
+
+vault secret store external secret with token example
+
+HashiCorp Vault
+
+External Secret Operator provider HV
+
+Example
+
+# 29-8-24
+app deployment 
+
+anticipating traffic before any big deal
+
+There is a performance envinroment checking all is good or not based on that we will going to the prod
+
+Running Load[Simulate the traffic] ---> This will tell how much are needed ---> How much load ---> BT will give the context---> 50 active users all the time--->Run Load % Collect Resource usage ---> BenchMark those resources
+
+# 30-8-24
+
+If you want to know usage of resources than probably if i'm looking for TSDB by prometheus
+
+The problem with metrics server show you at the moment of time metrics only no historical data metric points
+
+load testing
+
+docker.io/roboshop/rs-load
+
+env:
+  - name: HOST
+    value: "http://frontned/*"
+  - name: NUM_CLIENTS
+    value: "10"
+  - name: RUN_TIME
+    value: "5m"
+  - name: ERROR
+    value: "0"
+  - name: SILENT
+    value: "0"
+
+ learndevopsonline github above image was definition was avaialble
+
+watch "kubectl top pods"
+
+PT will conduct performance testing
+
+
+
 
 
