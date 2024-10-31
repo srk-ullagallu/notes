@@ -1,0 +1,12 @@
+# Modules Creation
+- vpc
+- sg
+- LB,TG
+- ASG,LT
+- EC2
+- CF
+- R53
+- RDS[mysql]
+- ECS
+- EKS,NodeGroups
+- CW
