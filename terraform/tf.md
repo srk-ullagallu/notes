@@ -148,9 +148,62 @@ variable "is_production" { type = bool }
 
 ---
 
-### **Difference Between `for_each` and `count`**
+In Terraform, both `for_each` and `count` can be used to create multiple instances of a resource, module, or output, but they serve different purposes and have unique behaviors:
 
-- **`count`**: Suitable for creating multiple instances of a resource in a simple list (e.g., `count = 3`). Instances are referenced by index (e.g., `aws_instance.example[0]`).
-  
-- **`for_each`**: Better for working with maps or sets, allowing instances to be identified by keys (e.g., `each.key`). More flexible than `count`, it enables configurations where resources are identified by meaningful names (e.g., `aws_instance.example["web"]`).
+### 1. `count`
+- **Purpose**: Creates a specific number of identical resource instances.
+- **Usage**: It’s ideal when you know the exact number of resources needed and don't need to assign unique keys to each instance.
+- **Index-Based**: Resources are accessed via index (e.g., `aws_instance.example[0]`).
+- **Limitations**: Less flexible than `for_each` because it doesn’t support mapping with custom keys.
+
+#### Example
+Creating 3 identical EC2 instances:
+```hcl
+resource "aws_instance" "example" {
+  count         = 3
+  ami           = "ami-123456"
+  instance_type = "t2.micro"
+}
+
+# Access example:
+# aws_instance.example[0], aws_instance.example[1], aws_instance.example[2]
+```
+
+### 2. `for_each`
+- **Purpose**: Creates instances based on a map or set of unique keys.
+- **Usage**: Preferred when you need more control over each instance, especially if each one has unique identifiers or configurations.
+- **Key-Based**: Resources are accessed via a unique key (e.g., `aws_instance.example["web"]`).
+- **Flexible**: Ideal for creating resources with different configurations, based on input maps or sets.
+
+#### Example
+Creating instances with specific names:
+```hcl
+resource "aws_instance" "example" {
+  for_each = {
+    web    = "ami-123456"
+    db     = "ami-234567"
+    backend = "ami-345678"
+  }
+
+  ami           = each.value
+  instance_type = "t2.micro"
+  tags = {
+    Name = each.key
+  }
+}
+
+# Access example:
+# aws_instance.example["web"], aws_instance.example["db"], aws_instance.example["backend"]
+```
+
+### Key Differences
+| Feature            | `count`                          | `for_each`                           |
+|--------------------|----------------------------------|--------------------------------------|
+| **Input**          | Integer                          | Map or Set                           |
+| **Access**         | Index-based `[0]`                | Key-based `["key"]`                  |
+| **Use Case**       | Identical instances              | Instances with unique attributes     |
+| **Modification**   | Reordering causes recreation     | Keys remain stable, fewer changes    |
+| **Flexibility**    | Limited customization            | Highly customizable per instance     |
+
+**Summary**: Use `count` when creating identical resources based on a number, and use `for_each` when you need unique instances with individual attributes.
 
