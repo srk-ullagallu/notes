@@ -500,6 +500,45 @@ watch "kubectl top pods"
 
 PT will conduct performance testing
 
+# 22-10-24
+
+`ISTIO` is dealing with communications
+ 
+Having multiple components communication b/w these composnents massive so that where the challenge come into picture
+
+N/W has a limitation that it can only deal with a tcp layer of communication 
+
+these ip address will not communicate with other or vice-versa
+
+so and so ns with so and labels we can deal with that
+
+Granular connections b/w components only that component is required for ex: GET POST DELETE  
+
+Why we allow unnecessary calls b/w components
+
+Deal with methods kind of restrictions b/w components with in the k8s cluster
+
+communication b/w components happend in plain communication happening actually dealing with http layer
+
+it is good thing have security in the communication b/w components
+
+It is not good thing going and modify the http to https in the code rather that service mesh comes in a handy
+
+they will take care about offloading request from the server istio help us auto encryption/decrypt
+
+# 23-10-24
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
