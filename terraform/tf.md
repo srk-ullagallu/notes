@@ -1,7 +1,3 @@
-Here are examples of each Terraform block, function, and concept, along with a brief comparison between `for_each` and `count`.
-
----
-
 ### 1. **Resource Block**
 Defines a resource to be created, such as an EC2 instance.
 
@@ -124,10 +120,14 @@ Inline conditions, often used to set values based on a condition.
 
 ```hcl
 resource "aws_instance" "example" {
-  instance_type = var.is_production ? "t3.medium" : "t2.micro"
+  instance_type = var.is_production == frontend ? "t3.medium" : "t2.micro"
   ami           = "ami-0c55b159cbfafe1f0"
 }
 ```
+
+var "is_production"{
+  default = ["frontend,"backend","db"]
+}
 
 ---
 
@@ -145,11 +145,6 @@ is_production  = true
 variable "instance_count" { type = number }
 variable "is_production" { type = bool }
 ```
-
----
-
-In Terraform, both `for_each` and `count` can be used to create multiple instances of a resource, module, or output, but they serve different purposes and have unique behaviors:
-
 ### 1. `count`
 - **Purpose**: Creates a specific number of identical resource instances.
 - **Usage**: It’s ideal when you know the exact number of resources needed and don't need to assign unique keys to each instance.
@@ -205,5 +200,45 @@ resource "aws_instance" "example" {
 | **Modification**   | Reordering causes recreation     | Keys remain stable, fewer changes    |
 | **Flexibility**    | Limited customization            | Highly customizable per instance     |
 
-**Summary**: Use `count` when creating identical resources based on a number, and use `for_each` when you need unique instances with individual attributes.
+=======
+# Access example:
+# aws_instance.example[0], aws_instance.example[1], aws_instance.example[2]
+```
 
+### 2. `for_each`
+- **Purpose**: Creates instances based on a map or set of unique keys.
+- **Usage**: Preferred when you need more control over each instance, especially if each one has unique identifiers or configurations.
+- **Key-Based**: Resources are accessed via a unique key (e.g., `aws_instance.example["web"]`).
+- **Flexible**: Ideal for creating resources with different configurations, based on input maps or sets.
+
+#### Example
+Creating instances with specific names:
+```hcl
+resource "aws_instance" "example" {
+  for_each = {
+    web    = "ami-123456"
+    db     = "ami-234567"
+    backend = "ami-345678"
+  }
+
+  ami           = each.value
+  instance_type = "t2.micro"
+  tags = {
+    Name = each.key
+  }
+}
+
+# Access example:
+# aws_instance.example["web"], aws_instance.example["db"], aws_instance.example["backend"]
+```
+
+### Key Differences
+| Feature            | `count`                          | `for_each`                           |
+|--------------------|----------------------------------|--------------------------------------|
+| **Input**          | Integer                          | Map or Set                           |
+| **Access**         | Index-based `[0]`                | Key-based `["key"]`                  |
+| **Use Case**       | Identical instances              | Instances with unique attributes     |
+| **Modification**   | Reordering causes recreation     | Keys remain stable, fewer changes    |
+| **Flexibility**    | Limited customization            | Highly customizable per instance     |
+
+**Summary**: Use `count` when creating identical resources based on a number, and use `for_each` when you need unique instances with individual attributes.
