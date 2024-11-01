@@ -528,6 +528,8 @@ they will take care about offloading request from the server istio help us auto 
 
 # 23-10-24
 
+- How we can enable encrypt svc-svc communication
+- Istio uses envoy proxy means along with main container istio container was also placed earlier communication happend directly to the pod now for request was received by istio container it will decrypt pass the request to the app container it process the request handover back to the istio it will encrypt the response back 
 
 
 
