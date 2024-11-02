@@ -164,26 +164,41 @@ kubectl api-resources
 
 # 9-8-2024
 
+pod is a virtual wrapper around the containers
+
+end of the actually a container
+
+If container dies ip address change 
+
+container in pod dies ip addr will not change 
+
 Every pod gets unique ip address
 
 How this ip address was managed in k8s
 
 crashloopback = container is dead or failed and the same container restarted again and again
 
-Every Pod has one pause-container pod is self is a container that id pause container
+Every Pod has one pause-container pod is self is a container that is pause container
 
 pause container is a first created to host the container
 
 it is going to reserve the n/w ns and all the containers created next to the pause container it is going to attach all the containers attached to the particualr n/w ns
 
+pod always reserves always one IP because of pause container eventhough container goes down in the pod
 
 `Different Phases of Pod life Cycle`
 
-- Pending[unable|to|find|resources]
+- Pending[unable|to|find|resources][schduler does not pod requirements]
 - Running[all|resources|workig]
 - Succeeded[all|containers|are|terminated|successfully|and|will|not|restarted]
 - Failed[one|of|the|container|existed|wiht|non-zero]
 - Unkonwn[some|of|the|reason|pod|state|is|updated]
+
+The backbone of k8s is API server in k8s we have lot of API's
+
+Normal API it will understand your request based on that it will redirect appropriate place it does proxy
+
+kubectl api-versons
 
 **Architecure of K8s**
 
@@ -198,8 +213,9 @@ It acts as a reverse proxy here
 - Validates the request
 - single entry for your request
 - updates the request config into etcd
-
+- API server Asks give me right node for this pod requirement
 `Schduler`
+
 
 - The purpose Scheduler is `pod` placement
 - Takes request from API server
@@ -211,14 +227,19 @@ It acts as a reverse proxy here
 `etcd`
 - It is a key-value database it stores the complete cluster configuration
 - HA
+- We need to troubleshoot pods so we need info this was provided by ETCD
+
+client  asking pod decribe --request---> API Server --get the decribe status of the pod-> etcd --etcd handovers info of the pod to the ---> API server ----> client
+
+
 
 `control manager`
 
 `cloud control manager`
-controller for creating LB,instances,security group
-
+controller for creating LB,instances,security group,volumes,r53 records
 
 `kubelet`
+
 - kubelet is a agent it takes instructions from the `APIServer`
 - According to the instructions it create and update the pod status back to the `APIServer`
 - It is a deamon service
@@ -227,13 +248,19 @@ controller for creating LB,instances,security group
 
 
 ReplicaSet is a configuration
+
 ReplicationController configuration is maintained by
 
+all the pods goaway so however 
+
+just remove the controller not the pods just use `kubectl delete <rs> --cascade=orphan`
 
 Labels and selectors are used to map 2 different Objects the k8s
 
 isolating pods from rs just remove labels of pods
 
+pod deletion cost when down scaling happen which pods get ridoff[youngest pods should deleted]
+using annotation we some metadata to the pod which will help us to do some extra ops like pod deletion cost
 
 some of the values are mutable[can|be|changed] and immutable[cannot|changed]
 
@@ -241,12 +268,20 @@ some of the values are mutable[can|be|changed] and immutable[cannot|changed]
 
 Through annotations we attach metadata 
 
+RS for `ensure desired nof pods`
+Deployment `Rotation of images chnages`
+
 `PodDeletionCost` using this annotation which pod get's deleted when downscaling was happend
 
 `[[[container]pod]rs]deployment`
 - pod is a wrapper around the containers
 - replica set is a wrapper around the pods
 - Deployment is a wrapper around rs
+
+- k8s is mainly for stateless app if you really want to deal with stateful application we have statefulset
+
+- Difference b/w `shared fs` and `distributed fs`
+- Jobs used to run pods some sort of time not like 24/7 if the work is completed it will goes off
 
 # 10-8-24
 
@@ -258,13 +293,20 @@ k8s CNI[calico|cilium|vpc|weavenet|flannel]
 
 Externalname is a cname records
 
-# 12-8-2024
+- How can i look into CNI range of IP ranges
+
+- IP tables are OS level firewall
+
+`CORE DNS`
+
+# 12-8-2024[statefulset]
 
 build docker image that prints hostname
 
 echo "Hello from $(hostname)" > /usr/share/nginx/html/index.html
 
 --image=docker.io/rkalluru/debug
+docker.io/rkalluru/nginx:hostname-print
 
 `configuration management` How can you manage configuration in k8s
 
@@ -296,7 +338,7 @@ Here are a few ways to restart the pods:
    kubectl rollout restart deployment <deployment-name>
    ```
 
-`Resource Management`
+`Resource Management`[ResourceBoundary]
 
 offere 3 things
 - cpu
@@ -313,7 +355,7 @@ Resource Quotas easy to organize the efficiently resources by admin
 Based on requirement admin allocate particular compute capacity to the ns
 
 # 13-8-2024
-
+56:42 OSI layer
 namespace level quotas and limits
 
 based on prority of pods can we apply resource quotas

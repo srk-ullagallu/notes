@@ -1,3 +1,5 @@
+Four Golden Signals **Latency** **Traffic** **Errors** **Saturation**
+ 
 # 2-9-24
 
 we want analyze what is going on with app wheather app serving very well or not well
@@ -46,5 +48,14 @@ grafana = visualizer
 
 https://pages.awscloud.com/GLOBAL_NCA_LN_ARRC-program-A300-2023.html
 
+kube prometheus stack
+
+`operator` it help us do some custom updates 
+
+external dns k8s 
+
+# 4-9-2024
+
+kuberenetes sigs
 
 
