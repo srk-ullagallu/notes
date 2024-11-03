@@ -84,3 +84,8 @@ curl -v http://<ip>:<port>
 
 # 6-9-24
 
+# 9-9-24
+
+elastic search is a seachable DB
+
+
