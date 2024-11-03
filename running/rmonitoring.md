@@ -2,6 +2,8 @@ Four Golden Signals **Latency** **Traffic** **Errors** **Saturation**
  
 # 2-9-24
 
+APM [Application performance Monitoring]
+
 we want analyze what is going on with app wheather app serving very well or not well
 
 with monitoring we will understand behaviour of the application
@@ -23,6 +25,24 @@ you're always look into recent data not  very long data
 
 TSDB based on you can get the data based on graph you represent
 
+If you very long data db ops could be slowed
+
+maintainning static config is very difficult
+
+ec2_sd_config
+
+```yaml
+job_name: "ec2-discovery"
+    ec2_sd_configs:
+        - region: ap-south-1
+          port: 9100
+          filters:
+            - name: 'tag:Monitor'
+              values: ['true','yes']
+    relabel_configs:
+        - source_labels: [_meta_ec2_tag_name]
+          target_label: name
+```
 every point of time of you have value
 
 Singnificant increase in the performance persfective
@@ -58,4 +78,9 @@ external dns k8s
 
 kuberenetes sigs
 
+# 5-9-24
+
+curl -v http://<ip>:<port>
+
+# 6-9-24
 
