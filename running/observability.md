@@ -143,6 +143,12 @@ When a developer instrumenting the metrics when they implementing metrics then c
 
 service monitor 
 
+httprequestcounter['methos','path','status_code']
+requestdurationhistogram[0.1,0.5,1,5,10]
+requestdurationsummary percentiles[0.5,0.9,0.99]
+
+
+
 
 
 
