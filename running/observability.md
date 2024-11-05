@@ -1,4 +1,4 @@
-If you have observability setup you can get insternal state of the system[Application,Infra structure,Network]
+If you have observability setup you can get internal state of the system[Application,Infra structure,Network]
 
 Understanding state of the system is working as expected or there any failures in networking latency
 
