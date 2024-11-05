@@ -1,4 +1,4 @@
-Four Golden Signals **Latency** **Traffic** **Errors** **Saturation**[]
+Four Golden Signals **Latency** **Traffic** **Errors** **Saturation**
  
 # 2-9-24
 
