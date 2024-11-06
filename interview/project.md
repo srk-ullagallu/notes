@@ -63,19 +63,27 @@ Would you like to practice explaining one of your projects, or do you need help 
 
 
 
-
+Duration: [Aug'2021 to till date]
 Project Name: Thomas Cook Tours and Travels: Flights, Hotels, Forex & Holidays
 Tools&Techonology: Jenkins,Github Actions,EKS,Docker,Terraform,ArgoCD,Prometheus&Grafana,Elastic Stack,AWS
 Role: DevOps Engineer
 Responsibilites:
+- Writing jenkins shared libs
+- Migrating gp2 to gp3 
+- Effectively trouble shooting issues
+- Writing terraform modules
 
-
+Duration: [Nov'2020 to July'2021]
 Project Name: Nissan Csstomer Care
 Tools&Technology: GitHubActions,ECS,S3,CloudWatch,Terraform,Terraform Cloud
 Role: DevOps Engineer
 Responsibilties:
+- Build CI/CD pipelines using GithubActions
+- Wrting Terraform Modules reuse the infra code to deploy app infra
+- Deploy the HA and Scalable infra
+- Did the POC to deploy application on s3 as frontend ECS 
 
-
+Duration: [Apr'2020 to Oct'2020]
 Project Name: 
 Tools&Technology: AWS,Git,Python
 Role: Cloud Engineer
