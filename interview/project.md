@@ -51,3 +51,32 @@ As a DevOps Engineer, when explaining your project to an interviewer, you should
 5. **Prepare for Follow-up Questions**: Be ready to dive deeper into any aspect of your explanation if asked. 
 
 Would you like to practice explaining one of your projects, or do you need help with a specific project description?
+
+
+
+
+
+
+
+
+
+
+
+
+
+Project Name: Thomas Cook Tours and Travels: Flights, Hotels, Forex & Holidays
+Tools&Techonology: Jenkins,Github Actions,EKS,Docker,Terraform,ArgoCD,Prometheus&Grafana,Elastic Stack,AWS
+Role: DevOps Engineer
+Responsibilites:
+
+
+Project Name: Nissan Csstomer Care
+Tools&Technology: GitHubActions,ECS,S3,CloudWatch,Terraform,Terraform Cloud
+Role: DevOps Engineer
+Responsibilties:
+
+
+Project Name: 
+Tools&Technology: AWS,Git,Python
+Role: Cloud Engineer
+Responsibilities:
