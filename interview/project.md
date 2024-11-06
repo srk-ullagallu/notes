@@ -83,6 +83,16 @@ Responsibilties:
 - Deploy the HA and Scalable infra
 - Did the POC to deploy application on s3 as frontend ECS 
 
+
+
+
+
+
+
+
+
+
+
 Duration: [Apr'2020 to Oct'2020]
 Project Name: 
 Tools&Technology: AWS,Git,Python
