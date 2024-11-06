@@ -73,6 +73,8 @@ Responsibilites:
 - Effectively trouble shooting issues
 - Writing terraform modules
 
+
+
 Duration: [Nov'2020 to July'2021]
 Project Name: Nissan Csstomer Care
 Tools&Technology: GitHubActions,ECS,S3,CloudWatch,Terraform,Terraform Cloud
