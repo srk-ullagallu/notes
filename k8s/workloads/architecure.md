@@ -1,6 +1,6 @@
 # K8s Architecture
 
-K8s by default Cluster In nature cluster is nothing but a group of nodes,some nodes acts as a `control plane` some `worker nodes`
+K8s by default Cluster In nature, cluster is nothing but a group of nodes,some nodes acts as a `control plane` some `worker nodes`
 
 `control plane` is responsible to manage containers like placement,keep the configuration,ensure HA, Scalability and healing of the containers.
 
