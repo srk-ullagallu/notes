@@ -71,6 +71,12 @@ At a scale declarative pipeline cannot handle declarative pipeline has a limitat
 BlueOcean
 PipelineStageView
 
+# 21-9-24
+Pipeline:MultiBranch
+Jenkins Installation with Ansible
+
+# 23-9-24
+
 
 
 
