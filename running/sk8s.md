@@ -54,3 +54,12 @@ I have volume in az-2 but my pod also should placed in az-2 now i want to advanc
 `Retain` pvc deleted remainning like pv and external volume still there
 `Recycle` data should erased ready for claim
 
+# 3-7-24
+EFS volume   storing and provisiong
+
+# 4-7-24
+- statefulsets are used to maintain statefull applications like DB,Prometheus
+- It will ensure pods have unique name[pods gets restart also identity will not same]
+- When Scaling happend mysql-0,mysql-1,mysql-2............ orderly happens
+- downscaling mysql-2,mysql-1...........
+- Generally clusterIP LB it is good for stateless app but in case of stateful app LB is not good because if records stires in each avialable pod we get inconsistent result so we would go for Headless service it does not have any IP it directly used POD IP
