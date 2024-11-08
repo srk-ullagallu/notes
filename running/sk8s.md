@@ -63,3 +63,49 @@ EFS volume   storing and provisiong
 - When Scaling happend mysql-0,mysql-1,mysql-2............ orderly happens
 - downscaling mysql-2,mysql-1...........
 - Generally clusterIP LB it is good for stateless app but in case of stateful app LB is not good because if records stires in each avialable pod we get inconsistent result so we would go for Headless service it does not have any IP it directly used POD IP
+- every pod have it's won storage so pv and pvc should created for every pod
+
+
+100% we should not place customer related date into k8s
+
+We just placed 2nd level data like monitoring,alerts
+
+`HELM`
+1. K8s package manager
+2. templatize k8s manifest files
+
+# 5-7-24
+RBAC
+
+K8s does not have auth it uses cloud provider but k8s have it own authorization
+
+policy 
+- descirbe cluster
+
+role [permissions]
+rolebinding [bind the role to the identity][R&RB are namespace level]
+
+Cluster Role Cluster Role binding[Clusterlevel]
+
+Linux and Netwroking is 90% of IT
+apiGroups[all services are grouped into multiple apiServices]
+reosurces[serivces]
+verbs[actions]
+
+aws iam eks aws-auth
+
+kubectl get configmap aws-auth -n kube-system -o yaml
+
+update aws-auth ConfigMap
+
+- IAM user
+- IAM policy to access EKS cluster
+- Role
+- RoleBinding
+- Integrate IAM user with aws-auth
+
+admin will  email project tema that ns and access is given
+
+pod is overutilized or underutilized
+HPA
+VPA
