@@ -59,3 +59,18 @@ Agent Node
 
 Any event happen in one system infrom to another system
 
+# 10-7-24
+input  
+
+- pipeline utility steps
+
+If organization is big prefere different jenkins for prod and lower env
+
+SRE:
+    Installation
+    RBAC
+    Upgrade
+    No Downtime
+    Monitor
+    Backup
+    
