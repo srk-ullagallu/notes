@@ -587,3 +587,374 @@ they will take care about offloading request from the server istio help us auto 
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 8-8-2024[k8s]
+Different orchestrators[k8s,swarm,ECS,OpenShift]
+
+What makes k8s better than docker swarm i.e is k8s introduces POD
+
+`Advantages of POd Over Container`
+- Pod is a wrapper around the containers
+- Pod is a logical group of containers meaning pod can have one or more containers inside that
+- Dealing with N/W,storage is a advantage
+- Inbuilt DNS server
+- Each and every pod has its own IP
+
+
+`Network In Container` The n/w b/w the containers goes over the outside nodes this becomes very difficult manage discovery is big  or quit challenge
+
+`Network in Pod` The n/w is with in the pod it is not even using node n/w when it comes it is very easy to container can communicate each other via localhost in the container
+
+Storage also same in case containers and pod also
+
+k8s deal with storage,n/w,firewalls 
+master nodes manages components in the cluster
+
+Master Nodes[`Manages components in the cluster`]
+Compute Nodes[`Host the workloads`]
+
+`Minikube Setup`
+
+
+APIServer[kubectl,k9s,k8sUI,Terraform,Ansible,Jenkins] we communicate with API server using these manay tools
+
+kubectl cluster-info
+
+cli approach creating the pods is not that much good it has lot much info pod cotainer or pod cli approach is not that much used we need to provide so much meta data it is better provide metadata through declarative format
+
+octant for k8s UI
+
+
+containers in the pod shares same ns that's the reason containers can communicate each other via localhost
+
+`ReplicaSet` Maintain the stable set of replica pods running at any given time it guarantees availability of a specified number of identical pods 
+
+kubectl get pods -l <key>:<value>
+
+The ReplicaSet and Pod are different entity but we can make relation b/w these 2 by using labels and selecotrs
+
+ReplicaSet manages the pods using selector labels
+
+ReplicaSet always look for pods belongs to replica set
+
+Always maintain unique labels
+
+kubectl api-resources
+
+We should read the documentation when there is a need
+
+Task
+----
+- Create a Replicaset with 3 pods
+- Create a naked pod with labels of Replicaset pods have
+- Then observer what happend
+
+
+# 9-8-2024
+
+How pod was preserve IP address eventhough container in the pod restarts multiple time the reason for that the pod launches one `pause container` along with the containers in the pod
+
+when you actually launch a pod the box of a pod itself is a container that is pause container 
+
+when the pod is a created the pause container also created to host the container it is going to reserve the n/w namespace now all the containers launch next to the pause container it is going to attach the particular ns
+
+`POD Life Cycle`
+
+`Pending` Pod has not been bound to any node
+`Running` Pod has been bound to node and all of the containers have been created atleast one container still running
+`Succeeded` all containers in the pod terminated successfully and will not restarted
+`Failed` all containers in the pod have terminated 
+`Unknown` For some reason the state of POd is not updated
+
+`API Server` The common objective of API server is understand incoming request based on the route appropriate products
+
+v1 v2 means in k8s manifest definition which `api` going to hit
+
+when you hit like this
+kubectl apply -f pod.yaml
+
+1. API server receives the request
+2. Writes the config in to ECTD
+3. API server pass the pod config to the schduler for pod placement
+4. Schduler wants node info from the API server
+5. API server fetch node info from the ETCD
+6. API server handovers the node info to the Schduler
+7. It runs algo for the pod placement before that it will also consider any constrains that pod have
+8. Then Sceduler gives back to the API server about pod placement
+9. API server updates the pod plament info in the ETCD
+10. API server calls the kubelet respect node pass the pod info to the kubelet
+11. kubelet instruct the container run time to create the container
+12. Once the containers is created kubelet wrap that container as  POD
+13. Now Kubelet handovers the this process resquest about pod creation status back to the API server
+14. Now API server update the pod status in the ETCD
+15. API server gives the response of pod creation to the client
+
+Difference b/w Replication Controller and ReplicaSet
+
+- Isolating the pods from replicaset by changing labels
+
+Annotations are used to pass supplement info to the pods 
+
+- Pod Deletion Cost When down scaling was happend which pods should remove 
+
+`Deployment` Replicaset is to main desired nof identical pods at any time but replicaset is not for deploying new pods for example if you nginx:1.20 now update to nginx:1.24 replicaset does not do anything that's is the reason why deployment comes in to the picture
+
+Deployment is super set of replicaset and rs is super set of pods
+
+Deployment is a wrapper around rs and rs is a wrapper around pods
+
+K8s is mainly for stateless applications in case if you want deal with db's we have stateful sets
+
+Why don't we use shared file system
+
+# 10-8-2024
+
+`services`
+
+`clusterIP`
+
+`NodePort`
+
+`LoadBalancer`
+
+`External` are CNAME records
+
+`Headless`
+
+In statefulset How can i decide who is write the data who is read the data
+
+
+`What is IP table` It is a os level firewall 
+https://www.tecmint.com/linux-iptables-firewall-rules-examples-commands/
+
+EKS uses VPC CNI
+
+Difference b/w VPC CNI/Calico/Cilium
+
+# 12-8-2024
+
+TO check headless service design Nginx container that prints ip of the container
+
+- first create deployment+service with clusterIP check the DNS of service does it gives ip of container or service
+- second create statefuleset+headless service then do like above and observer it
+
+kubectl logs -f -l app=nginx
+
+configuration management How can manage env variables in k8s 
+
+If you keep defining env vairables in pod definition it is a pain to maintain all the env that's why k8s comes with centralized managed configuration for pods that is configmap that thing is keeyp dry and clean in pod definition
+
+
+secrets in k8s there is no use this is simple encode and decode so will go and user hashicorp vault to store secrets
+To deal with the secrets we would use HV
+
+some of the pods behaving abnormally due to the whatever reason
+
+resources: must requires compute capacity to start pod
+limits: Some times the pod requires more cpu but it won't access all capacity in the node some we draw some boundary for resources usage It is a bonus not guarantee of limits defined capacity,If capacity avialable use it if not there is no guaranteee
+
+Requests[Mandatory]
+Limits[NoGurantee]
+
+behind the scene k8s monitors k8s resources it will adjust accordingly
+
+history | grep docker | grep up
+
+
+We can define Quotas for the namespace that ns will not exceed what we define for ns to know the resource
+
+If based on priority of pod we can define Quotas if pod as high priority it will get it 
+
+# 13-08-2024[seucrity]
+
+How do you provide authorization in k8s
+
+In k8s the identity provides by service account
+
+In aws whatever we doing that will monitor by cloud trail
+
+Role is identity in aws
+
+ServiceAccount is identity in k8s
+
+kubectl get pod debug -o yaml
+
+Every ns has comes with default serviceaccount
+
+`Task`
+- create sa in siva ns
+- create pod with sa in ns
+
+`RBAC`[Authorization]
+
+
+
+Role = NS level
+CLusterRole = Cluster level
+- Above 2 has permissions to access resources in cluster
+
+RoleBinding
+ClusterRoleBinding
+
+- Binding means attach Role to the identity
+
+`Task`
+- create role to watch list,watch,create pods in siva ns
+- create sa in siva ns
+- binding role to sa
+- deploy pod in siva
+- check the logs pod
+
+- create same pod in rama ns
+- check the logs 
+
+- Why do we need a permission to a pod within cluster
+For example I need to install a software that will manage the pods for example there is a argoCD is a deployment tool which also get a pod state in the cluster it require a permission
+
+In Cluster every pod can talk each other there is no restriction we don't have any limitation however how can i control or restirct the pod communication this where N/W policies comes in to the picture
+
+- one ns talk to another ns
+- pod to another pod
+
+- How based on labels and IP traffic
+
+There 2 types
+
+- Incoming traffic
+- Outgoing traffic
+
+OSI layers are fundamental communication layers how the communication work b/w 2 devices in a n/w
+
+segments Transport here sg are comes in to picture basically it understands protocols
+packets Netwokt  happend over IP addresses
+
+content aware is layer 7[content aware proxy]
+content aware is layer 4[non content aware proxy]
+
+
+1:00:55 
+
+nginx is a layer 7 software which will understands the request is coming /api /images ...
+
+# 14-08-2024
+
+HTTP methods
+ISTIO
+
+container pod security
+
+- run as a normal user
+- SELinux[bring the relation b/w file and user][wheather particular process is able to access or not that was defined by selinux if the context is matches allow other wise block it]
+- Running as priviliaged or unprivilaged pod
+- Linux capabilities
+
+This has some imporatant concept like privilaged container
+
+- Docker has problem if you mount /var/lib/dcoker.sock it has privilages
+
+enforce security context in k8s across context
+
+
+# 19-8-2024
+
+PSS[PodSecurityStandards] 
+`Privileged` unrestricted or unsecure providing the widest possible level of permissions
+`BaseLine` Minimally restricted 
+`Restricted`
+
+PSA[PodSecurityAdmission]
+`enforce`
+`audit`
+`warn`
+
+- Hello Chatgpt Can you design lab for me above
+
+kubeaudit
+kubesec
+kubebench
+kubescan
+kubescore
+kubehunter
+kubiscan
+
+these free tools to scan but in enterprise world we would use some pait tools like
+
+Twistlock defender
+
+Before going to prod we need to get signoff from security team
+
+7 k8s security scanners to use in your devsecops pipeline
+
+# 20-8-2024
+
+`probes` like health checks to determine my application running or not
+
+`HPA`
+
+kubectl get hpa --watch
+
+HPA Basic on CPU and Memory
+
+KEDA[k8seventdrivingautoscaling] is best for scaling k8s
+
+VPA
+
+I want seek a clarity wheather a my pod can increases resources or not
+
+VPA exercise please ChatGpt
+
+need to install VPA[hackfolder]
+
+# 21-8-2024[Scheduling]
+This is the right for this pod
+
+node selector
+affinity/anti affinity
+requiredduringschedulingingonreduringexecution[must statisfy]
+preferedduringschedulingingonreduringexecution[may be no problem if not satisfy]
+
+Taints
+Tolerations
+
+# 22-8-2024
+EBS EKS IAM Role
+
+# 23-8-2024
+
+
+
+
+
+[10 DevOps Projects](https://www.youtube.com/watch?v=1tHFB5rDz-Y)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

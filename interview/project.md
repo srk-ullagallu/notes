@@ -85,18 +85,21 @@ Responsibilties:
 - Deploy the HA and Scalable infra
 - Did the POC to deploy application on s3 as frontend ECS 
 
-
-
-
-
-
-
-
-
-
-
 Duration: [Apr'2020 to Oct'2020]
 Project Name: 
 Tools&Technology: AWS,Git,Python
 Role: Cloud Engineer
 Responsibilities:
+
+
+- Tell me about your self
+- Why do you interest in the position
+- Can you describe your exp with <any devops tool>
+- What is your greatest strength
+- What is you weakness
+   - How can we discuss weakness in a constructive way
+- Why you're your current job
+- Can you tell me incident where over come a challege[answer in STAR method]
+- Where do you see you self next 5 years
+- Why shoould i hire you
+- Do you any have questions

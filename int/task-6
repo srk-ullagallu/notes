@@ -1,0 +1,31 @@
+Here’s how to present your scenario using the **STAR** format:
+
+### **STAR Format Explanation**
+
+**Situation:**  
+We encountered a critical issue while trying to deploy my microservice. The deployment failed because we were using a development image instead of the production image, which caused significant delays in our release schedule.
+
+**Task:**  
+My task was to identify the root cause of the deployment failure and ensure that we could deploy the correct microservice image to restore functionality and maintain our timeline.
+
+**Action:**  
+During the troubleshooting process, we diligently checked various factors, including IAM roles and permissions, to ensure they were correctly configured. However, after thorough investigation and several rounds of checks, we realized that the deployment was failing due to the use of the wrong image. Once we identified the issue, I quickly coordinated with the team to correct the image reference in our deployment configuration. We replaced the development image with the appropriate production image and initiated the deployment again.
+
+**Result:**  
+The deployment was successful with the correct production image, allowing the microservice to function as intended. This experience highlighted the importance of maintaining a clear and organized deployment process. Additionally, it reinforced the value of having a calm and focused mindset during troubleshooting, enabling us to arrive at the correct conclusion efficiently.
+
+### **Final Example Using STAR Format:**
+
+**Situation:**  
+We encountered a critical issue while trying to deploy my microservice, as the deployment failed due to using a development image instead of the production image, causing significant delays.
+
+**Task:**  
+I was responsible for identifying the root cause of the deployment failure and ensuring the correct microservice image was deployed.
+
+**Action:**  
+During troubleshooting, we checked various factors, including IAM roles and permissions. After thorough investigation, we concluded that the failure was due to the wrong image. I quickly coordinated with the team to correct the image reference in our deployment configuration, replacing the development image with the production image, and initiated the deployment again.
+
+**Result:**  
+The deployment was successful, restoring the microservice’s functionality as intended. This experience emphasized the importance of maintaining an organized deployment process and the value of a calm and focused mindset during troubleshooting, enabling us to resolve issues efficiently.
+
+This STAR format effectively communicates the situation, your responsibilities, the actions taken, and the positive outcomes, showcasing your problem-solving abilities and attention to detail.
