@@ -16,9 +16,25 @@ new relic is where dev,ops,security and business teams solve software performanc
 
 Google SRE book[https://sre.google/sre-book/monitoring-distributed-systems/]
 
+`Monitoring` collect and processing the data about the applications and servers cpompute reosurces,request count,
+`BlackBox` Monitoring By clients they were just accessing the app if yes other wise no they did not know why application was not coming
+`WhiteBox` Monitoring going to see into internal of the app or system what is why it is bad how became bad we going to analyze
+`DashBoard` Good visualization of data
+`Alert` send the notification to the respected teams
+`RootCauseAnalysis` Once the issue occured you need to figure out exact reason for failure what and why it happen
+
+Why Monitor
+- Analyze long term trends
+- comparing overtime and experiment groups
+- alerting
+- Building dashboards it is very difficult know what is the usage of compute resources in the system so we create centralized dashboards to view
+- conducting adhoc retrospective analysis[i.e debugging]
+
 Four Golden Singnals
 
-Latency,Traffic,Errors,Saturation
+`Latency,Traffic,Errors,Saturation`
+
+Require Singnificant of engineering time
 
 # 3-9-24
 you're always look into recent data not  very long data
