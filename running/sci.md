@@ -73,4 +73,22 @@ SRE:
     No Downtime
     Monitor
     Backup
+
+# 11-7-24
     
+- ansi color
+
+white lebled traffic only allowed
+
+project infra
+application infra
+tools infra
+
+It is not like on the fly to add or implement scanning into our pipelines it is like journey of months to implement in it
+
+6months = you must enable the scan
+6months = you need to clear defects if defects are not clearn fail the scan
+
+discussion happend over scan
+
+Jenkins co ordinate all the tools sequnentially run the stages
