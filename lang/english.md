@@ -1,5 +1,6 @@
 Here are some commonly used English phrases:
-
+My goals are different, and I struggle to properly express my career aspirations
+If you have any recent, well-crafted resumes, please share them with me, as they would be helpful
 ### Greetings and Introductions
 1. **"How are you?"**
 2. **"Nice to meet you."**
