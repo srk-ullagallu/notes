@@ -53,4 +53,25 @@ count loops based on index identification of failure touch, and also change chan
 for_each loops based on key value pair identification of failure becomes very easy
 
 # 18-7-2024
-modules = grouping the resources,do the best practices and DRY 14.53
+modules = grouping the resources,do the best practices and DRY
+
+In terraform what is the best code structure for multiple env of remote state and remote modules
+
+chicken egg problem
+
+# 19-7-2024
+
+Github Actions
+
+In CMD we don't have any track who is running what so we going to pipieline
+
+# 20-7-2024
+configuring github runner
+
+# 22-7-2024
+
+for saas and paas you directly attach role for iaas use instance profile
+
+In AWS some H/W is ideal
+
+amazon offers unused h/w for lesser cost if they need then can taken back
