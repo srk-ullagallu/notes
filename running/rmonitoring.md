@@ -102,6 +102,8 @@ curl -v http://<ip>:<port>
 
 # 9-9-24
 
-elastic search is a seachable DB
+elastic search is a searchable DB
 
+Production grade prometheus
+Production grade elastic search
 
