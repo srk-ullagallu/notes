@@ -1,4 +1,4 @@
-# 12-7-2024
+# 12-7-24
 standard operating procedure
 
 time spend in ops is very very huge cast compared to development cast
@@ -47,31 +47,53 @@ variables
 tfvars[high precedenc than variables]
 -var=file-variables.tf[highprecedence than tfvars]
 
-# 16-7-2024
+# 16-7-24
 
 count loops based on index identification of failure touch, and also change change the order of terraform what is the behaviour of that[it is destroying the things and re create it] count considerd as a least priority option
 for_each loops based on key value pair identification of failure becomes very easy
 
-# 18-7-2024
+# 18-7-24
 modules = grouping the resources,do the best practices and DRY
 
 In terraform what is the best code structure for multiple env of remote state and remote modules
 
 chicken egg problem
 
-# 19-7-2024
+# 19-7-24
 
 Github Actions
 
 In CMD we don't have any track who is running what so we going to pipieline
 
-# 20-7-2024
+# 20-7-24
 configuring github runner
 
-# 22-7-2024
+# 22-7-24
 
 for saas and paas you directly attach role for iaas use instance profile
 
 In AWS some H/W is ideal
 
-amazon offers unused h/w for lesser cost if they need then can taken back
+amazon offers unused h/w for lesser cost if they need they can taken back
+
+# 23-7-24
+
+connection timeout  = port not allowed
+
+in terraform iterate particulor block we would use dynamic block
+
+The main advantage using vault if you found any compromize you seald it no one to access it
+
+valut can be accessibe in ansible,terraform,githubactions,k8s
+
+modules are in seperate github repository multiple project can use the same modules to build infra
+
+# 24-7-24
+
+# 25-7-24
+Modules Development
+
+# 26-7-24
+Modules Development
+
+# 27-7-24

@@ -14,7 +14,7 @@ paramantma darsanam kanidhi kaivalylam radu
 
 sahasra samam = veyi samvastralu
 
-kulptam ga oka pisaru vuntundhi 
+kluptam ga oka pisaru vuntundhi 
 
 21-06-2018[1]  28 manavula vichitra pokadalu
 
