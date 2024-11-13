@@ -9,6 +9,7 @@
 ## GitOps
 
 ## DevOps
+Streamline the Development and testing and deployment process by implementing Autokmated CI/CD process 
 
 ## DevSecOps
 
