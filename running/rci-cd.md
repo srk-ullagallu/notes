@@ -2,11 +2,12 @@
 
 # 20-9-24
 
-`CI`
+`CI` Automating the integration of code changes from multiple contributors into a single software project during development developers
+merge their code changes frequently to central repo where build and tests are happend for each and every commit pipeline should run
 
-`CI Benefits`
+`CI Benefits` faster releases with less defects
 
-`Pipeline`
+`Pipeline` 
 
 Usually in organizations CI and CD pipelines are decoupled
 
@@ -44,6 +45,14 @@ So the pipeline that should support all the above scenarios
 - Tags should be detected
 
 After every detect the pipeline should run for its respective commit
+
+
+"We use a multibranch pipeline in Jenkins because, during development, developers often create multiple branches. As a DevOps engineer, it's not feasible to create a separate Jenkins pipeline for each branch. With the multibranch pipeline, Jenkins automatically detects branches containing a `Jenkinsfile` and triggers the CI/CD pipeline for each detected branch, ensuring continuous integration and delivery."
+
+
+declarative pipeline is easy to write it has syntax according to our requirement we can write pipelines though it is a easy and has lot of challenges so end of the we would go with scripted pipeline at a scale declarative pipeline not handling I faced scenario where declarative pipeline has a limitation so my strategy go into the scripted pipeline
+
+
 
 Why Jenkins is not good for CD purpose:
 - Since it does not have a flexibility to stop in b/w and wait for some actions like approvals for a long time phase to phase
@@ -98,6 +107,11 @@ tag                    no                      no               yes             
 
 Declarative pipeline is good for single branch scenarion if it is multi branch it won't be a good choice for example we have when condition if it is a main run but what about if it is not main how can i control other stages
 
+jenkins shared lib
+
+`-` are not allowed `_` only allowed in funtion names
+
+
 sh 'env'
 
 # 24-9-24
@@ -149,3 +163,12 @@ github actions
 githuactions argocd deploymnt pipeline
 
 # 
+
+
+1. SCM checkout
+2. Unit test cases
+3. SonarQube Analysis
+4. Owasp dependecy Check
+5. Docker build[applicationbuild]
+6. Dcoker image Scanning
+7. image push
