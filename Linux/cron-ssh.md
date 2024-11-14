@@ -1,7 +1,3 @@
-# SSH
-
-Here’s an overview of SSH (Secure Shell) and some commonly used files and commands for SSH configuration and management:
-
 ### **SSH (Secure Shell)**
 - **Purpose**: SSH is a protocol used to securely connect to remote systems for executing commands, transferring files, and managing remote servers.
 - **Default Port**: SSH operates on port **22**.

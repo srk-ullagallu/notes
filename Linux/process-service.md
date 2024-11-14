@@ -1,24 +1,22 @@
 # Process Management
-
 A **process** is simply a running instance of a program. Each process is assigned a unique Process ID (PID) and fair amount of dedicated  system resources to complete its job independently.All process are running isolated
 
 - Kernel is the main component in the OS it can efficiently manages the System resources and has capable of convert system calls into binary instructions to interact with H/W and vice-versa
-- Kernel Ensure each and every process get fair amount system resources to complete job or task and prevent interfearece b/w 2 process
 - Kernel has many features but out of that Namespaces and cGroups plays a vital role in the containers world
-
+- Namespaces are a feature of the Linux kernel that partitions kernel resources such that one set of processes sees one set of resources while another set of processes sees a different set of resources and it Prevent interfearece b/w 2 process
 - Namespaces provides isolations different levels each and every process has it's own set of
   - PID
   - N/W[Each container get it's own n/w stack[IPaddresses,RoutingTables,firewallrules]]
   - USERS/Groups
   - Hostname
-  - FileSystem
+  - FileSystem[mount/umount]
 
-- cGroups are allocating and managing compute resources at process level[ensuring each and every process gets fair distribution and preventing any single process from monopolizing system resources.]
+- cGroups are allocating and managing compute resources at process level[ensuring each and every process gets fair distribution and preventing any single process from monopolizing system resources.][assign and control system resources to a process]
 
 Here’s an overview of the Linux commands and concepts you’ve listed:
 
 ### **Daemon Process**
-- A **daemon** is a background process that runs independently of a terminal session, often started during system boot, performing specific functions (e.g., `httpd` for web services, `sshd` for SSH access).
+- A **daemon** is a background process that runs independently of a terminal session, often started during system boot, performing specific functions (e.g., `httpd` for web services, `sshd` for SSH access). Ever running process in the system
 
 ### **Process Management Commands**
 - `top`: Displays a dynamic, real-time view of system processes, showing CPU and memory usage.
@@ -116,9 +114,6 @@ WantedBy=multi-user.target
 4. **Stop/Restart**: Use `sudo systemctl stop backend.service` or `sudo systemctl restart backend.service` as needed.
 
 This setup allows `systemd` to manage the backend service efficiently, ensuring it starts at boot and is isolated under the specified user with the necessary environment variables.
-
-
-
 
 It sounds like you're describing the general data flow process in a computer system. Here’s a breakdown of the typical flow:
 
