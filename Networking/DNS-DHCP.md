@@ -49,8 +49,6 @@ In short:
 - **DNS** helps find addresses for websites.
 - **DHCP** gives devices IP addresses automatically when they connect to a network.
 
-
-
 LinuxMachine[LocalCache] If not find www.google.com
      Then it will contacts Resolver[ProvidedbyISP] If not find
           Then it contacts root server it will maintains TLD like .com,.org,.in
@@ -62,9 +60,7 @@ LinuxMachine[LocalCache] If not find www.google.com
                                     Next time it uses local cache
 
 
-
                                     When you request **app.google.com**, the DNS system resolves the domain name in a hierarchical manner. To understand how it's structured, let’s break it down into **TLS**, **SLD**, and other components.
-
 
 ### Example Breakdown: 
 For **app.google.com**:
@@ -73,10 +69,6 @@ For **app.google.com**:
 - **SLD**: `google`
 - **Subdomain**: `app`
 
-
-Certainly! Let's walk through the DNS resolution process for **app.google.com** step-by-step based on the outlined flow and the breakdown of domain structure:
-
----
 
 ### **Step-by-Step Process**:
 1. **Linux Machine (Local Cache)**:
