@@ -1,10 +1,37 @@
+
+
+
+
+curl https://raw.githubusercontent.com/projectcalico/calico/v3.29.0/manifests/calico.yaml -O
+
+
+
+
+
+kubectl label node ip-172-31-32-122 node-role.kubernetes.io/worker=worker
+kubectl label node ip-172-31-43-213 node-role.kubernetes.io/worker=worker
+
+
+
+
+kubectl get|describe|logs|exec|events pods
+
+
+kubectl api-resources
+
+kubectl events ip-172-31-32-12
+
+
+kubeadm cluster create 
+----------------------
+
+1. Launch 3 servers t3a.medium[ubuntu]
+2. Installing containerd,cni plugin,runc and kubeadm,kubelet,kubectl[all 3 nodes]
+
 cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
 net.ipv4.ip_forward = 1
 EOF
-
 sudo sysctl --system
-
-
 
 wget https://github.com/containerd/containerd/releases/download/v2.0.0/containerd-2.0.0-linux-amd64.tar.gz
 tar xvf containerd-2.0.0-linux-amd64.tar.gz
@@ -51,30 +78,65 @@ sudo apt-mark hold kubelet kubeadm kubectl
 
 sudo systemctl enable --now kubelet
 
+3. kubeadm init   [only on master node][run as root user]
+
+You will get below info in your machine take kubeadm join command run all worker nodes
+
+Your Kubernetes control-plane has initialized successfully!
+
+To start using your cluster, you need to run the following as a regular user:
+
+`To get kube config file in non-root user use below commands`
+  mkdir -p $HOME/.kube
+  sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+  sudo chown $(id -u):$(id -g) $HOME/.kube/config
+
+Alternatively, if you are the root user, you can run:
+`For root user just export`
+  export KUBECONFIG=/etc/kubernetes/admin.conf
+
+
+`Then you can join any number of worker nodes by running the following on each as root:`
+
+kubeadm join 172.31.34.170:6443 --token djdvig.sc79zwpoj1lh9di5 \
+        --discovery-token-ca-cert-hash sha256:421a53c051469c098f3bc1ea446ad948ec52bd47a5849d7113b00c2bc6063a2f
+
+4. Install calico plugin[https://docs.tigera.io/calico/latest/getting-started/kubernetes/self-managed-onprem/onpremises]
 
 curl https://raw.githubusercontent.com/projectcalico/calico/v3.29.0/manifests/calico.yaml -O
 
+kubectl apply -f calico.yaml
 
+5. commands
 
+kubectl get pods -n kube-system
+kubectl get nodes
+kubectl get pods -A -w
 
-
-kubectl label node ip-172-31-32-122 node-role.kubernetes.io/worker=worker
-kubectl label node ip-172-31-43-213 node-role.kubernetes.io/worker=worker
-
-
-
-
-kubectl get|describe|logs|exec|events pods
-
+kubectl get ns
 
 kubectl api-resources
 
-kubectl events ip-172-31-32-12
 
 
-kubeadm cluster create 
-----------------------
 
-1. Installing containerd
-2. runc installing
-3. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
+
+
+https://kubernetes.io/docs/reference/networking/ports-and-protocols/
+
