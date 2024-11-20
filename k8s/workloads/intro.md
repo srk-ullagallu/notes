@@ -1,6 +1,7 @@
 # Why K8s
 Containers are an excellent way to bundle and run applications, but they lack mechanisms for high availability (HA), scalability, and auto-healing. This is where Kubernetes (K8s) comes into play. It provides a robust framework that efficiently manages failover, HA, and scalability.
 
+Deployable means "ready to be launched or executed in a system."
 
 **Features**
 `Service Discovery & LB`
