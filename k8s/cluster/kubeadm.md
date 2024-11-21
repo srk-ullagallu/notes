@@ -82,22 +82,3 @@ https://kubernetes.io/docs/reference/kubectl/quick-reference/
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
-
-
-https://kubernetes.io/docs/reference/networking/ports-and-protocols/
-
