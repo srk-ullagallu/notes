@@ -47,3 +47,6 @@ In EKS, the `Cloud Controller Manager` manages integration with AWS cloud servic
 13. The `kubelet` sends the pod creation status back to the `API server`.
 14. The `API server` updates the pod status in `etcd`.
 15. The `API server` responds to the client with the pod creation status.
+
+
+ source .bashrc
