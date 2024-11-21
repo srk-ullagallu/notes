@@ -79,6 +79,9 @@ kubectl label node <node-name> node-role.kubernetes.io/worker=worker
 6. commands reference
 https://kubernetes.io/docs/reference/kubectl/quick-reference/
 
+alias k='kubectl'
+
+
 
 
 

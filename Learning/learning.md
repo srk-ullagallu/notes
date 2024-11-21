@@ -19,7 +19,11 @@
 # projects
 
 ### expense project VM setup[cloudwatch]
+
+
+
+### expense project + roboshop containers
+
 ### expense project[serverless][cloudwatch]
-### expense project + roboshop containers[[Monitroing,Elastic stack]]
 ### instana ECS
 ### expense project + roboshop k8s[Monitroing,Elastic stack]
