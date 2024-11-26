@@ -31,3 +31,23 @@ My background in Java became an invaluable asset as it helped me understand how 
 # Why we hire you
 
 You should hire me because I bring a unique combination of experience in both development and DevOps. My expertise in AWS, Jenkins, and Docker, along with my background in Java, enables me to design better solutions that bridge the gap between development and operations. I'm proactive in solving challenges and have a proven track record of improving efficiency and streamlining processes. Additionally, I'm passionate about staying updated on industry trends, and I believe I can make a significant contribution to your team and help drive the company forward
+
+
+
+
+
+
+
+
+
+
+Roles and responsibilities of current job
+Basic shell scripting using exit code depending on last command status
+What is the pipeline structure that you are using
+Are you using the vanilla flavor of kubernetes
+Pipeline script using windows and Linux agent in a same file
+How elk is installed for newly formed worker nodes
+How do you optimise the pipeline execution time, steps taken
+How Terraform is used to maintain different environments
+What are parameters in Jenkins, how is it being used in your project
+How to check if the current state of infra is up to date on a environment

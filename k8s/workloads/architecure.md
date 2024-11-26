@@ -18,8 +18,6 @@ The `Controller Manager` is responsible for maintaining the cluster's desired st
 
 In EKS, the `Cloud Controller Manager` manages integration with AWS cloud services. It handles tasks like provisioning AWS resources (e.g., load balancers, EBS volumes), managing node lifecycles, and updating routes. This allows Kubernetes to leverage AWS infrastructure efficiently within an EKS cluster.
 
-
-
 *Worker Node Components*
 
  `kubelet` An agent running on each node that takes instructions from the `apiserver` to create and manage pods, while also updating pod status back to the `apiserver`.
@@ -27,8 +25,6 @@ In EKS, the `Cloud Controller Manager` manages integration with AWS cloud servic
 - `kube-proxy` Manages networking for pods on each node, handling routing, load balancing, and maintaining network rules for cluster communication.
 
 - `CRI` (Container Runtime Interface) Responsible for creating and managing containers, supporting container operations as directed by Kubernetes.
-
-
 
 **Flow of `kubectl apply -f pod.yaml`:**
 
@@ -49,6 +45,6 @@ In EKS, the `Cloud Controller Manager` manages integration with AWS cloud servic
 15. The `API server` responds to the client with the pod creation status.
 
 
- source .bashrc
+source .bashrc
 
  

@@ -1,38 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 ### TroubleShooting
 When troubleshooting an **Application Load Balancer (ALB)** in AWS, follow these steps:
 
@@ -154,10 +119,7 @@ After the Auto Scaling Group (ASG) adds or removes servers, it waits for a while
 This keeps your website running smoothly without too many changes happening too quickly.
 
 
-
-
 # ELB
-
 - ELB is a managed service
 - They will take care about upgrades,HA and Maintenance
 
@@ -363,10 +325,6 @@ When troubleshooting an **Application Load Balancer (ALB)** in AWS, you should f
    - Use **curl** or similar tools to send requests directly to the ALB and inspect the responses.
    - Check if the ALB responds correctly from within the same VPC (if applicable) and from external sources.
 
-
-
-
-
 ### What is Cross-Zone Load Balancing?
 
 When you have a **load balancer** in AWS, it sends traffic to different servers (called "targets") to handle user requests. These servers might be located in different **Availability Zones (AZs)**, which are like separate data centers in different locations.
@@ -417,9 +375,7 @@ NLB operates at Layer 4 and is designed for high throughput and low-latency traf
 3. **Least Outstanding Requests** (for UDP traffic only):
    - Similar to ALB, for **UDP** traffic, NLB forwards requests to the target with the **fewest outstanding (in-progress) connections**.
    - This helps balance traffic more evenly when handling large volumes of requests with differing target processing capacities.
-
 ---
-
 ### Summary of Algorithms:
 - **ALB**:
   - **Round Robin**
