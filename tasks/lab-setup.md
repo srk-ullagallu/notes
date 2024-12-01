@@ -23,16 +23,6 @@ echo 'export PATH=$DOTNET_ROOT:$PATH' >> ~/.bashrc
 source ~/.bashrc
 dotnet --version
 
-**Jenkins Installation**
-sudo wget -O /etc/yum.repos.d/jenkins.repo \
-    https://pkg.jenkins.io/redhat-stable/jenkins.repo
-sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
-sudo yum upgrade
-sudo yum install jenkins
-sudo systemctl daemon-reload
-sudo systemctl enable jenkins
-sudo systemctl start jenkins
-sudo systemctl status jenkins
 **Python**
 - python already installed so you just type python3 --version
 
@@ -47,7 +37,6 @@ python3 -m pip install --user ansible
 curl -sL https://rpm.nodesource.com/setup_20.x | sudo bash -
 sudo dnf install nodejs -y 
 **Java**
-
 sudo yum install java-17-amazon-corretto-devel -y
 **Maven**
 wget https://dlcdn.apache.org/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.tar.gz
@@ -57,6 +46,16 @@ echo "export M2_HOME=/opt/maven" >> ~/.bashrc
 echo "export PATH=$M2_HOME/bin:$PATH" >> ~/.bashrc
 echo "export M2_HOME=/opt/maven" >> ~/.bash_profile
 echo "export PATH=$M2_HOME/bin:$PATH" >> ~/.bash_profile
+**Jenkins Installation**
+sudo wget -O /etc/yum.repos.d/jenkins.repo \
+    https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+sudo yum upgrade
+sudo yum install jenkins
+sudo systemctl daemon-reload
+sudo systemctl enable jenkins
+sudo systemctl start jenkins
+sudo systemctl status jenkins
 **Terraform**
 sudo yum install -y yum-utils
 sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
