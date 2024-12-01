@@ -18,9 +18,7 @@ docker-compose version
 wget https://dotnetcli.azureedge.net/dotnet/Sdk/9.0.100/dotnet-sdk-9.0.100-linux-x64.tar.gz -O dotnet-sdk-9.0.100-linux-x64.tar.gz
 mkdir -p $HOME/dotnet
 tar -xvzf dotnet-sdk-9.0.100-linux-x64.tar.gz -C $HOME/dotnet
-echo 'export DOTNET_ROOT=$HOME/dotnet' >> ~/.bashrc
-echo 'export PATH=$DOTNET_ROOT:$PATH' >> ~/.bashrc
-source ~/.bashrc
+ln -s $HOME/dotnet /usr/local/bin/dotnet
 dotnet --version
 
 **Python**
@@ -84,12 +82,7 @@ rpm -ivh https://github.com/aquasecurity/trivy/releases/download/v0.18.3/trivy_0
 wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip 
 unzip sonar-scanner-cli-4.6.2.2472-linux.zip
 mv sonar-scanner-4.6.2.2472-linux /opt/sonar-scanner
-echo "export SONAR_SCANNER_HOME=/opt/sonar-scanner" >> ~/.bashrc
-echo "export PATH=\$SONAR_SCANNER_HOME/bin:\$PATH" >> ~/.bashrc
-echo "export SONAR_SCANNER_HOME=/opt/sonar-scanner" >> ~/.bash_profile
-echo "export PATH=\$SONAR_SCANNER_HOME/bin:\$PATH" >> ~/.bash_profile
-source ~/.bashrc
-source ~/.bash_profile
+ln -s /opt/sonar-scanner /usr/local/bin/sonar-scanner
 sonar-scanner --version
 **github runner**
 - create github organization
