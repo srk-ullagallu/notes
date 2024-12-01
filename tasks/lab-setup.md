@@ -68,7 +68,7 @@ curl -sS https://webinstall.dev/k9s | bash
 **github runner**
 - create github organization
 - go to settings of organization
-- one the left you can find `actions` and expand it select new `runner` and runner image `linux`
+- one the left you can find `actions` and expand it select new `runner` and runner click on new runner image `linux`
 - you can find `Donwload` and `Configure` sections copy all the commands in a notepad
 - Go to workstation install one by one step for example
 
