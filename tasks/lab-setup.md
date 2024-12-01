@@ -22,6 +22,7 @@ echo 'export DOTNET_ROOT=$HOME/dotnet' >> ~/.bashrc
 echo 'export PATH=$DOTNET_ROOT:$PATH' >> ~/.bashrc
 source ~/.bashrc
 dotnet --version
+
 **Python**
 - python already installed so you just type python3 --version
 
