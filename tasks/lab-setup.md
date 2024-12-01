@@ -82,6 +82,18 @@ sudo mv tfsec /usr/local/bin/
 tfsec --version
 **trivy**
 rpm -ivh https://github.com/aquasecurity/trivy/releases/download/v0.18.3/trivy_0.18.3_Linux-64bit.rpm
+
+**sonar-scanner**
+wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip 
+unzip sonar-scanner-cli-4.6.2.2472-linux.zip
+mv sonar-scanner-4.6.2.2472-linux /opt/sonar-scanner
+echo "export SONAR_SCANNER_HOME=/opt/sonar-scanner" >> ~/.bashrc
+echo "export PATH=\$SONAR_SCANNER_HOME/bin:\$PATH" >> ~/.bashrc
+echo "export SONAR_SCANNER_HOME=/opt/sonar-scanner" >> ~/.bash_profile
+echo "export PATH=\$SONAR_SCANNER_HOME/bin:\$PATH" >> ~/.bash_profile
+source ~/.bashrc
+source ~/.bash_profile
+sonar-scanner --version
 **github runner**
 - create github organization
 - go to settings of organization
