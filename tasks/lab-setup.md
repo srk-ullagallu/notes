@@ -16,9 +16,9 @@ docker-compose version
 
 **dotnet installation**
 wget https://dotnetcli.azureedge.net/dotnet/Sdk/9.0.100/dotnet-sdk-9.0.100-linux-x64.tar.gz -O dotnet-sdk-9.0.100-linux-x64.tar.gz
-mkdir -p $HOME/dotnet
-tar -xvzf dotnet-sdk-9.0.100-linux-x64.tar.gz -C $HOME/dotnet
-ln -s $HOME/dotnet /usr/local/bin/dotnet
+sudo mkdir -p $HOME/dotnet
+sudo tar -xvzf dotnet-sdk-9.0.100-linux-x64.tar.gz -C $HOME/dotnet/
+sudo ln -s $HOME/dotnet/dotnet /usr/local/bin/
 dotnet --version
 
 **Python**
@@ -28,25 +28,29 @@ dotnet --version
 
 curl -O https://bootstrap.pypa.io/get-pip.py
 python3 get-pip.py --user
-
+pip --version
 **ansible installation**
 python3 -m pip install --user ansible
+ansible --version
 **NodeJS**
 curl -sL https://rpm.nodesource.com/setup_20.x | sudo bash -
-sudo dnf install nodejs -y 
+sudo dnf install nodejs -y
+node -v
+npm -v
 **Java**
 sudo yum install java-17-amazon-corretto-devel -y
+java --version
 **Maven**
 wget https://dlcdn.apache.org/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.tar.gz
 tar -xvzf apache-maven-3.9.9-bin.tar.gz
 sudo mv apache-maven-3.9.9 /opt/maven
 sudo ln -s /opt/maven/bin/mvn /usr/local/bin/mvn
+mvn --version
 **Jenkins Installation**
 sudo wget -O /etc/yum.repos.d/jenkins.repo \
     https://pkg.jenkins.io/redhat-stable/jenkins.repo
 sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
-sudo yum upgrade
-sudo yum install jenkins
+sudo yum install jenkins -y
 sudo systemctl daemon-reload
 sudo systemctl enable jenkins
 sudo systemctl start jenkins
@@ -60,29 +64,32 @@ terraform -v
 sudo yum install -y yum-utils
 sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
 sudo yum -y install packer
+packer -v
 **kubectl**
 curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.31.2/2024-11-15/bin/linux/amd64/kubectl
 chmod +x kubectl
 sudo mv kubectl /usr/local/bin
+kubectl version --client -o yaml
 **kubens and kubectx**
 sudo git clone https://github.com/ahmetb/kubectx /opt/kubectx
 sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
 sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
 **k9s**
 curl -sS https://webinstall.dev/k9s | bash
+k9s --version
 **tfsec**
 wget https://github.com/aquasecurity/tfsec/releases/download/v1.28.11/tfsec-linux-amd64 -O tfsec
 chmod +x tfsec
 sudo mv tfsec /usr/local/bin/
 tfsec --version
 **trivy**
-rpm -ivh https://github.com/aquasecurity/trivy/releases/download/v0.18.3/trivy_0.18.3_Linux-64bit.rpm
-
+sudo rpm -ivh https://github.com/aquasecurity/trivy/releases/download/v0.18.3/trivy_0.18.3_Linux-64bit.rpm
+trivy --version
 **sonar-scanner**
 wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip 
 unzip sonar-scanner-cli-4.6.2.2472-linux.zip
-mv sonar-scanner-4.6.2.2472-linux /opt/sonar-scanner
-ln -s /opt/sonar-scanner /usr/local/bin/sonar-scanner
+mv sonar-scanner-cli-4.6.2.2472 sonar
+sudo ln -sf $HOME/sonar/bin/sonar-scanner /usr/local/bin/sonar-scanner
 sonar-scanner --version
 **github runner**
 - create github organization
