@@ -23,6 +23,16 @@ echo 'export PATH=$DOTNET_ROOT:$PATH' >> ~/.bashrc
 source ~/.bashrc
 dotnet --version
 
+**Jenkins Installation**
+sudo wget -O /etc/yum.repos.d/jenkins.repo \
+    https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+sudo yum upgrade
+sudo yum install jenkins
+sudo systemctl daemon-reload
+sudo systemctl enable jenkins
+sudo systemctl start jenkins
+sudo systemctl status jenkins
 **Python**
 - python already installed so you just type python3 --version
 
