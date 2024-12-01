@@ -1,5 +1,5 @@
 # Work station setup
-- Launch EC2 instance and type is amazon linux 3
+- Launch EC2 instance and type is amazon linux 3 t3a.small and 20GB
 - Softwares need to install
 **Docker and Docker Compose**
 sudo dnf install -y git docker tmux tree perl libicu
