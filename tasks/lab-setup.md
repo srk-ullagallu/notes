@@ -34,18 +34,19 @@ python3 get-pip.py --user
 **ansible installation**
 python3 -m pip install --user ansible
 **NodeJS**
-curl -fsSL https://fnm.vercel.app/install | bash
-source ~/.bashrc
-fnm use --install-if-missing 20
-node -v
-npm -v 
+curl -sL https://rpm.nodesource.com/setup_20.x | sudo bash -
+sudo dnf install nodejs -y 
 **Java**
-sudo yum install java-11-amazon-corretto-devel
+
+sudo yum install java-17-amazon-corretto-devel -y
 **Maven**
-sudo wget http://repos.fedorapeople.org/repos/dchen/apache-maven/epel-apache-maven.repo -O /etc/yum.repos.d/epel-apache-maven.repo
-sudo sed -i s/\$releasever/6/g /etc/yum.repos.d/epel-apache-maven.repo
-sudo yum install -y apache-maven
-mvn --version
+wget https://dlcdn.apache.org/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.tar.gz
+tar -xvzf apache-maven-3.9.9-bin.tar.gz
+sudo mv apache-maven-3.9.9 /opt/maven
+echo "export M2_HOME=/opt/maven" >> ~/.bashrc
+echo "export PATH=$M2_HOME/bin:$PATH" >> ~/.bashrc
+echo "export M2_HOME=/opt/maven" >> ~/.bash_profile
+echo "export PATH=$M2_HOME/bin:$PATH" >> ~/.bash_profile
 **Terraform**
 sudo yum install -y yum-utils
 sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
