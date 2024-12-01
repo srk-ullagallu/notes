@@ -76,6 +76,11 @@ sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
 sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
 **k9s**
 curl -sS https://webinstall.dev/k9s | bash
+**tfsec**
+wget https://github.com/aquasecurity/tfsec/releases/download/v1.28.11/tfsec-linux-amd64 -O tfsec
+chmod +x tfsec
+sudo mv tfsec /usr/local/bin/
+tfsec --version
 **github runner**
 - create github organization
 - go to settings of organization
