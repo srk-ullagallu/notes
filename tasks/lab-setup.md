@@ -42,12 +42,7 @@ sudo yum install java-17-amazon-corretto-devel -y
 wget https://dlcdn.apache.org/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.tar.gz
 tar -xvzf apache-maven-3.9.9-bin.tar.gz
 sudo mv apache-maven-3.9.9 /opt/maven
-echo "export M2_HOME=/opt/maven" >> ~/.bashrc
-echo "export PATH=$M2_HOME/bin:$PATH" >> ~/.bashrc
-echo "export M2_HOME=/opt/maven" >> ~/.bash_profile
-echo "export PATH=$M2_HOME/bin:$PATH" >> ~/.bash_profile
-source ~/.bashrc
-source ~/.bash_profile
+sudo ln -s /opt/maven/bin/mvn /usr/local/bin/mvn
 **Jenkins Installation**
 sudo wget -O /etc/yum.repos.d/jenkins.repo \
     https://pkg.jenkins.io/redhat-stable/jenkins.repo
