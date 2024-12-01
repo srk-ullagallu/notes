@@ -46,6 +46,8 @@ echo "export M2_HOME=/opt/maven" >> ~/.bashrc
 echo "export PATH=$M2_HOME/bin:$PATH" >> ~/.bashrc
 echo "export M2_HOME=/opt/maven" >> ~/.bash_profile
 echo "export PATH=$M2_HOME/bin:$PATH" >> ~/.bash_profile
+source ~/.bashrc
+source ~/.bash_profile
 **Jenkins Installation**
 sudo wget -O /etc/yum.repos.d/jenkins.repo \
     https://pkg.jenkins.io/redhat-stable/jenkins.repo
