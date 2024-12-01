@@ -80,6 +80,8 @@ wget https://github.com/aquasecurity/tfsec/releases/download/v1.28.11/tfsec-linu
 chmod +x tfsec
 sudo mv tfsec /usr/local/bin/
 tfsec --version
+**trivy**
+rpm -ivh https://github.com/aquasecurity/trivy/releases/download/v0.18.3/trivy_0.18.3_Linux-64bit.rpm
 **github runner**
 - create github organization
 - go to settings of organization
