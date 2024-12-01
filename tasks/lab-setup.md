@@ -78,6 +78,7 @@ sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
 sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
 **k9s**
 curl -sS https://webinstall.dev/k9s | bash
+sudo ln -s ~/.local/bin/k9s /usr/local/bin/k9s
 k9s version
 **tfsec**
 wget https://github.com/aquasecurity/tfsec/releases/download/v1.28.11/tfsec-linux-amd64 -O tfsec
