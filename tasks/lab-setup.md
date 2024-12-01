@@ -10,9 +10,9 @@ sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-
 
 newgrp docker
 
-chmod +x /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
 docker version
-docker-compose 
+docker-compose version
 
 **dotnet installation**
 wget https://dotnetcli.azureedge.net/dotnet/Sdk/9.0.100/dotnet-sdk-9.0.100-linux-x64.tar.gz -O dotnet-sdk-9.0.100-linux-x64.tar.gz
