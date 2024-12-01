@@ -28,9 +28,11 @@ dotnet --version
 
 curl -O https://bootstrap.pypa.io/get-pip.py
 python3 get-pip.py --user
+sudo ln -s ~/.local/bin/pip /usr/local/bin/pip
 pip --version
 **ansible installation**
 python3 -m pip install --user ansible
+sudo ln -s ~/.local/bin/ansible /usr/local/bin/ansible
 ansible --version
 **NodeJS**
 curl -sL https://rpm.nodesource.com/setup_20.x | sudo bash -
@@ -76,7 +78,7 @@ sudo ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
 sudo ln -s /opt/kubectx/kubens /usr/local/bin/kubens
 **k9s**
 curl -sS https://webinstall.dev/k9s | bash
-k9s --version
+k9s version
 **tfsec**
 wget https://github.com/aquasecurity/tfsec/releases/download/v1.28.11/tfsec-linux-amd64 -O tfsec
 chmod +x tfsec
@@ -88,7 +90,7 @@ trivy --version
 **sonar-scanner**
 wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.6.2.2472-linux.zip 
 unzip sonar-scanner-cli-4.6.2.2472-linux.zip
-mv sonar-scanner-cli-4.6.2.2472 sonar
+mv sonar-scanner-4.6.2.2472-linux sonar
 sudo ln -sf $HOME/sonar/bin/sonar-scanner /usr/local/bin/sonar-scanner
 sonar-scanner --version
 **github runner**
@@ -124,6 +126,7 @@ once it is completed
 add github runner as a system service
 
 sudo nano /etc/systemd/system/github-runner.service
+bash```
 [Unit]
 Description=GitHub Actions Runner
 After=network.target
@@ -136,7 +139,7 @@ Restart=always
 
 [Install]
 WantedBy=multi-user.target
-
+```
 
 Replace /home/ec2-user/actions-runner with the path where your GitHub Actions Runner is installed.
 
