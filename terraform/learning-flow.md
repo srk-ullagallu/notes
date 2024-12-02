@@ -6,10 +6,11 @@
 - outputs
 - local
 - data
-- dynamic
+- null_resource
 # loops and conditions
 - count
 - for_each
+- dynamic
 - condition ? true : false
 # Functions
 - length
@@ -34,3 +35,4 @@
 - local-exec
 - remote-exec
 - file
+

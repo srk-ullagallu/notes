@@ -14,4 +14,4 @@
 # GithubActions The New CI/CD/CD we can say another CI/CD/CD platform
 # GitLab The New CI/CD/CD we can say another CI/CD/CD platform
 
-# ArGOCD tool for k8s
+# ArGOCD[GitOps] tool for k8s
