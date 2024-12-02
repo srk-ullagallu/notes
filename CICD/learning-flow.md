@@ -7,6 +7,7 @@
 - Declarative Pipeline
 - FreeStyle Jobs
 - Shared Library
+- Jenkins Master-Slave Architecture
 - Backup
 - Upgrade
 
