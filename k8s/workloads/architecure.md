@@ -45,6 +45,4 @@ In EKS, the `Cloud Controller Manager` manages integration with AWS cloud servic
 15. The `API server` responds to the client with the pod creation status.
 
 
-source .bashrc
-
  
