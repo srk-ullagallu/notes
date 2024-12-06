@@ -1,8 +1,10 @@
 # phase-I
 
+# What is k8s?
 # Why K8s?
 [k8s archi and features](https://kubernetes.io/docs/concepts/overview/#why-you-need-kubernetes-and-what-can-it-do)
-# What is k8s?
+# k8s architecture
+[k8s architecture](https://kubernetes.io/docs/concepts/overview/components/)
 
 # ClusterSetup
 - kubeadm
@@ -23,6 +25,7 @@
 - CronJob
 - DaemonSet
 - StatefulSet
+
 # Services[Networking]
 - ClusterIP
 - NodePort
@@ -30,16 +33,20 @@
 - ExternalName
 - Headless Service
 - Ingress
+
 # Storage
 - pv,pvc,sc
 - Static volume provisioning
 - Dynamic volume provisioning
+
 # Configuration
 - configmap
 - secrets
 - probes[liveness,readiness]
+
 # Security
 - RBAC
+
 # Quotas
 - ResourceQuotas
 - HELM,Kustomization

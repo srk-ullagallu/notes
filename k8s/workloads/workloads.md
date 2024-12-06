@@ -80,17 +80,7 @@ A **Pod** is the smallest deployable unit in Kubernetes. It is an abstraction th
 
 ---
 
-### Example Use Case:
-
-- **Container**:
-  - Running a simple web application like Nginx on its own.
-
-- **Pod**:
-  - Running a web server (Nginx) container **alongside** a logging sidecar container. Both containers share the same storage and networking within the Pod.
-
-
 ### Replication Controller
-
 - **Definition**: The Replication Controller ensures that a specified number of pod replicas are running at any given time.
 - **Selector**: It uses equality-based selectors to identify pods. This means it can only match labels that are equal (e.g., `app=nginx`).
 - **Rolling Updates**: It does not support rolling updates. If you need to update the pod template, you must delete the existing Replication Controller and create a new one.
