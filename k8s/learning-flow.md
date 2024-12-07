@@ -1,8 +1,10 @@
 # phase-I
 
 # What is k8s?
+
 # Why K8s?
 [k8s archi and features](https://kubernetes.io/docs/concepts/overview/#why-you-need-kubernetes-and-what-can-it-do)
+
 # k8s architecture
 [k8s architecture](https://kubernetes.io/docs/concepts/overview/components/)
 
