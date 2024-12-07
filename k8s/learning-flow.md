@@ -1,5 +1,3 @@
-# phase-I
-
 # What is k8s?
 
 # Why K8s?
