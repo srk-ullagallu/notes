@@ -33,6 +33,7 @@
 - EKS
 - create EKS cluster 
 - deploy expense and instana project
+- prometheus&Grafana
 
 # CI/CD
 
