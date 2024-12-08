@@ -1,150 +1,74 @@
-### 1. **Resource Block**
-Defines a resource to be created, such as an EC2 instance.
-
-```hcl
-resource "aws_instance" "example" {
-  ami           = "ami-0c55b159cbfafe1f0"
-  instance_type = "t2.micro"
-}
-```
+### **Before Infrastructure as Code (IAC)**  
+Manually creating infrastructure leads to several challenges:  
+- **Error-prone**: Increased likelihood of human errors during setup and configuration.  
+- **Lack of resource tracking**: Difficulty in documenting all created resources accurately.  
+- **No versioning or auditing**: Inability to track changes or revert to previous infrastructure states.  
+- **Replication challenges**: Creating identical environments (e.g., dev, staging, production) is complex and inconsistent.  
 
 ---
 
-### 2. **Variable Block**
-Declares inputs that can be used across your configuration.
-
-```hcl
-variable "instance_count" {
-  description = "Number of EC2 instances to create"
-  type        = number
-  default     = 1
-}
-```
+### **After Infrastructure as Code (IAC)**  
+Adopting IAC addresses these issues with the following benefits:  
+- **Version control and auditing**: Easily track infrastructure changes using VCS (Version Control Systems).  
+- **Reduced configuration drift**: Ensures infrastructure consistency across environments.  
+- **Efficient resource management**: Organizes and manages resources systematically.  
+- **Ease of replication**: Simplifies creating identical infrastructure across multiple environments.  
+- **Cost analysis**: Enables better insight into resource costs and optimizations.  
 
 ---
 
-### 3. **Output Block**
-Displays values after the Terraform apply phase.
+### **Terraform**  
+Terraform is a popular Infrastructure as Code tool that simplifies infrastructure management:  
+- **HCL (HashiCorp Configuration Language)**: Declarative language for defining infrastructure.  
+- **Declarative approach**: Specify the desired state, and Terraform manages the provisioning.  
+- **Cloud-agnostic**: Supports multiple cloud providers (AWS, Azure, GCP, etc.) with a single tool.  
+- **State management**: Tracks the current state of resources for consistent updates.  
+- **Modules**: Encourages reusable and modular infrastructure code for better organization.  
 
-```hcl
-output "instance_public_ip" {
-  value = aws_instance.example.public_ip
-}
-```
 
----
 
-### 4. **Local Block** (with expressions)
-Defines local values, often using expressions to simplify calculations or complex configurations.
 
-```hcl
-locals {
-  env_prefix    = "dev"
-  instance_name = "${local.env_prefix}-instance"
-  subnet_id     = "subnet-abc123"
-}
-```
 
----
 
-### 5. **Data Block**
-Fetches data from existing resources, useful when you need details about something outside of your configuration.
 
-```hcl
-data "aws_ami" "ubuntu" {
-  most_recent = true
-  owners      = ["099720109477"]
-  filter {
-    name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server-*"]
-  }
-}
-```
 
----
 
-### 6. **Dynamic Block**
-Creates nested blocks dynamically based on a list or map.
 
-```hcl
-resource "aws_security_group" "example" {
-  name = "example-sg"
 
-  dynamic "ingress" {
-    for_each = [80, 443]
-    content {
-      from_port   = ingress.value
-      to_port     = ingress.value
-      protocol    = "tcp"
-      cidr_blocks = ["0.0.0.0/0"]
-    }
-  }
-}
-```
 
----
 
-### **Functions**
 
-### 7. **count**
-Used to create multiple instances of a resource. Suitable for simple list-based configurations.
 
-```hcl
-resource "aws_instance" "example" {
-  count         = var.instance_count
-  ami           = "ami-0c55b159cbfafe1f0"
-  instance_type = "t2.micro"
-}
-```
 
----
 
-### 8. **for_each**
-Creates instances for each item in a map or set, enabling more granular control and named instances.
 
-```hcl
-resource "aws_instance" "example" {
-  for_each      = { web = "t2.micro", app = "t2.small", db = "t2.medium" }
-  ami           = "ami-0c55b159cbfafe1f0"
-  instance_type = each.value
-  tags = {
-    Name = each.key
-  }
-}
-```
 
----
 
-### 9. **Conditional Expression (ternary operator)**
-Inline conditions, often used to set values based on a condition.
 
-```hcl
-resource "aws_instance" "example" {
-  instance_type = var.is_production == frontend ? "t3.medium" : "t2.micro"
-  ami           = "ami-0c55b159cbfafe1f0"
-}
-```
 
-var "is_production"{
-  default = ["frontend,"backend","db"]
-}
 
----
 
-### 10. **Using `.tfvars`**
-You can define variable values in a `.tfvars` file, commonly named `terraform.tfvars`, for automatic loading during execution.
 
-**terraform.tfvars**
-```hcl
-instance_count = 3
-is_production  = true
-```
 
-**main.tf**
-```hcl
-variable "instance_count" { type = number }
-variable "is_production" { type = bool }
-```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### 1. `count`
 - **Purpose**: Creates a specific number of identical resource instances.
 - **Usage**: It’s ideal when you know the exact number of resources needed and don't need to assign unique keys to each instance.
@@ -189,7 +113,7 @@ resource "aws_instance" "example" {
 
 # Access example:
 # aws_instance.example["web"], aws_instance.example["db"], aws_instance.example["backend"]
-```
+hcl```
 
 ### Key Differences
 | Feature            | `count`                          | `for_each`                           |
@@ -199,8 +123,6 @@ resource "aws_instance" "example" {
 | **Use Case**       | Identical instances              | Instances with unique attributes     |
 | **Modification**   | Reordering causes recreation     | Keys remain stable, fewer changes    |
 | **Flexibility**    | Limited customization            | Highly customizable per instance     |
-
-=======
 # Access example:
 # aws_instance.example[0], aws_instance.example[1], aws_instance.example[2]
 ```
