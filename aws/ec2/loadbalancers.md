@@ -18,47 +18,15 @@
 - It is Layer 7 LB
 - It is intelligent LB route traffic based on host based and path based requests
 - A load balancer serves as the single point of contact for clients.
+- HTTP,HTTPS and WEBSOCKET protocols
 
-# ALB Components
+# NLB 
+- It is Layer 4 LB
+- It is designed to handle millions of requests for second
+- It will supports static IP for each AZ because of its low level design it works in Layer 4 in ISO/OSI model
+- We can easily whiltelisting and block listing the traffic
+- TCP and UDP protocols
 
-`listners` listner checks the requests from client using protocol and port you configure. It evaluates the rules that are defined if the condition meets it will performs the actions You must define a default rule for each listener, and you can optionally define additional rules. Rules are evaoluated from top to bottom
-
-`target groups` have collection of ec2 instances or lambda functions or ecs tasks you can configure health checks at TG level
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### ELB (Elastic Load Balancer) Components in AWS
 
 AWS Elastic Load Balancer (ELB) is a fully managed service that automatically distributes incoming traffic across multiple targets, such as EC2 instances, containers, and IP addresses. AWS offers **three main types of ELBs**: **Application Load Balancer (ALB)**, **Network Load Balancer (NLB)**, and **Classic Load Balancer (CLB)**.
 
@@ -110,28 +78,6 @@ Each type of ELB has its components and use cases:
    - Similar to ALB, it has a public DNS name registered in Route 53.
 
 ---
-
-### 3. **Classic Load Balancer (CLB)** – Legacy Load Balancer  
-- **Purpose**: Older version of ELB, suitable for **TCP and HTTP/HTTPS traffic**, but offers fewer advanced features than ALB and NLB.
-- **Components**:
-
-1. **Listeners**  
-   - Define protocols (TCP or HTTP/HTTPS) and ports.
-
-2. **Instances**  
-   - Targets are usually **EC2 instances** rather than target groups.
-
-3. **Health Checks**  
-   - Monitor the health of EC2 instances to ensure traffic is only routed to healthy instances.
-
-4. **Security Groups**
-   - Attached to control inbound and outbound traffic.
-
-5. **DNS Name**  
-   - Public DNS name similar to the other load balancers.
-
----
-
 ### **Common Components Across All ELBs**
 - **VPC Integration**  
   - ELBs operate within your Virtual Private Cloud (VPC) and integrate with subnets.
@@ -211,5 +157,82 @@ You have an ALB set up for a web application with an HTTPS endpoint. The flow wo
 5. ALB re-encrypts the response (if required) and sends it back to the client.
 
 This process offloads the computationally expensive tasks of TLS encryption and decryption from your backend services, improving performance and manageability.
+
+
+Let me break it down with a simpler explanation and an example.
+
+---
+
+### **How Load Balancing Works Without Cross-Zone Load Balancing**
+1. **Load Balancer Nodes**:
+   - Each Availability Zone (AZ) in your AWS setup has one or more **load balancer nodes** when you enable that AZ.
+
+2. **Traffic Distribution**:
+   - Incoming traffic is **evenly distributed across the load balancer nodes** in each AZ.
+   - However, each load balancer node only forwards traffic to **targets (e.g., EC2 instances, containers)** within the **same AZ** as that node.
+
+3. **Issue**:
+   - If one AZ has **fewer targets** than others, those targets will receive **more traffic per target**, leading to uneven load distribution.
+
+---
+
+### **Example Without Cross-Zone Load Balancing**
+
+#### Setup:
+- Assume you have:
+  - **Two AZs**: `us-east-1a` and `us-east-1b`.
+  - **Four targets** total:
+    - 2 targets in `us-east-1a`.
+    - 2 targets in `us-east-1b`.
+
+- Traffic Distribution:
+  - Traffic is evenly split between AZs.
+  - Each load balancer node sends traffic **only to the targets in its own AZ**.
+
+| AZ          | Number of Targets | % Traffic Per Target |
+|-------------|-------------------|----------------------|
+| us-east-1a  | 2                 | 50% ÷ 2 = 25% each  |
+| us-east-1b  | 2                 | 50% ÷ 2 = 25% each  |
+
+#### What Happens If Targets Are Uneven?
+- Suppose `us-east-1a` has 2 targets, but `us-east-1b` has **1 target**.
+
+| AZ          | Number of Targets | % Traffic Per Target |
+|-------------|-------------------|----------------------|
+| us-east-1a  | 2                 | 50% ÷ 2 = 25% each  |
+| us-east-1b  | 1                 | 50% ÷ 1 = 50% total |
+
+- The single target in `us-east-1b` receives **50% of the total traffic**, while targets in `us-east-1a` each handle only **25% of the total traffic**.
+- This creates an **imbalance** in load distribution.
+
+---
+
+### **How Cross-Zone Load Balancing Fixes This**
+1. **Traffic Distribution**:
+   - Incoming traffic is still **evenly split across load balancer nodes** in all AZs.
+   - However, each load balancer node can now **send traffic to targets in all AZs**, not just its own.
+
+#### Example With Cross-Zone Load Balancing
+- Using the same setup (2 targets in `us-east-1a` and 1 in `us-east-1b`):
+
+| AZ          | Number of Targets | % Traffic Per Target |
+|-------------|-------------------|----------------------|
+| us-east-1a  | 2                 | 100% ÷ 3 = ~33.3%   |
+| us-east-1b  | 1                 | 100% ÷ 3 = ~33.3%   |
+
+- All targets now receive approximately the **same percentage of traffic** (33.3%), regardless of the AZ they are in.
+
+---
+
+### **Key Takeaway**
+Without cross-zone load balancing:
+- Each load balancer node can only send traffic to targets in its own AZ.
+- Uneven numbers of targets in AZs result in **uneven traffic distribution**.
+
+With cross-zone load balancing:
+- Load balancer nodes can send traffic to targets in **any AZ**.
+- Traffic is distributed evenly **across all targets**, solving the imbalance.
+
+Does this help clarify the concept? Let me know if you’d like further examples or visualizations!
 
 
