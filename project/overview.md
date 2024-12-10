@@ -1,43 +1,32 @@
 # 3-tier vm setup[expense]
-
-- create infrastructure using terraform
-  - vpc
-  - sg
-  - Ec2
-  - ALB
-  - ASG
-  - ACM
-  - R53
-  - CF
-  - CW
-  - RDS
-- Write Modules for above all services
-- packer 
+TargetEnvironment: Ec2 instances
+DB: RDS
+InfraCreation: Terraform
+Observability: CloudWatch 
 
 # ECS Project[instana]
+TargetEnvironment: ECS
+Observability: CloudWatch
+InfraCreation: Terraform
+CI/CD: GitHubActions
 
-- containerize application
-- create infra structure using terraform
-- create extra modules like
-  - ECS and use above all modules that are required for ECS project setup
+# Single page application[3-tier]
+TargetEnvironment: frontend[s3],backend[ECS],DB[RDS]
+Observability: CloudWatch
+InfraCreation: Terraform
+CI/CD: GithubActions
 
-# Single page application
+# k8s project[MicroServices]
+TargetEnvironment: EKS
+Nof-Microservices: 11
+Monitoritng: Prometheus&Grafana
+Logging: EFK
+InfraCreation: Terraform
+CI: Jenkins,GithubActions
+CD: ArgoCD
+Traces: Kiali&Jaegar
+Mesh: Istio
 
-- containerize backend
-- frontend[s3]
-- backend[ECS]
-- DB[RDS]
-
-# k8s project
-
-- EKS
-- create EKS cluster 
-- deploy expense and instana project
-- prometheus&Grafana
-
-# CI/CD
-
-- create CI/CD pipelines to deploy application on ECS and EKS
 
 
 
