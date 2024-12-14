@@ -417,3 +417,44 @@ A:
 A:
 • Change permissions: `chmod -R 755 /path/to/directory`
 • Change ownership: `chown -R user:group /path/to/directory`
+
+
+
+
+
+
+General Questions: 
+1- Introduce yourself. 
+2- Describe a challenge you faced as a devops engineer and how you overcame it. 
+3- Would you like to work individually or in a team. 
+4 - Tell me about something where you got a chance to learn and implement from scratch. 
+5- How would you be handling a situation where you are not getting any help from your team members. 
+ 
+AWS Questions: 
+1- Launch template vs launch configuration. 
+2- How do you communicate with AWS services privately without exposing to internet. 
+3- NAT g/w vs NAT instance v/s Egress only IGW v/s IGW 
+4- Design a 3 tier infrastructure using the AWS services which should be secure and highly available. 
+5- Statefull v/s stateless firewalls. 
+6- Differentiate between NLB and ALB. 
+7- You want to redirect traffic from x.company.in to company.in/x, how to achieve it. 
+8- Your database initially performs well, but after certain month you face slowness. How to troubleshoot and fix the same. 
+ 
+K8s: 
+1- K8s architecture 
+2- Deployment v/s stateful set v/s replica set 
+3- What is config map 
+4- Role of etcd in kubernetes. 
+5- How rolling updates work in a deployment? 
+ 
+Docker: 
+1- ADD v/s COPY 
+2- Entrypoint v/s CMD 
+3- How to remove all unwanted or unused docker objects from system? 
+4- Multistage docker build. 
+5- Is docker file immutable 
+ 
+Terraform: 
+1- What does terraform init do ? 
+2- How to auto approve the terraform changes? 
+3- count v/s foreach 
