@@ -457,4 +457,293 @@ Docker:
 Terraform: 
 1- What does terraform init do ? 
 2- How to auto approve the terraform changes? 
-3- count v/s foreach 
+3- count v/s foreach
+4- How to import an existing resource to terraform? 
+5- Data black in terraform. 
+6- What are provisioners in terraform? 
+7- Remote backend. 
+ 
+Linux: 
+1- How to check the list of installed packages? 
+2- Command to check kernel version. 
+3- How to create a new user and add it as sudo? 
+4- Command to check if a process called "a" is running or not. If running how stop it. 
+5- Command to list all files less than 5mb. 
+6- Hard link v/s soft link. 
+7- Commands to check disk space usage and free RAM. 
+ 
+CI/CD: 
+1- Git fetch v/s Git pull 
+2- Sonarqube quality gate vs quality profile. 
+3- What is sonar runner. 
+4- Types of pipeline in Jenkins. 
+5- Scripted vs Declarative pipeline. 
+6- Should we prefer artifactory to store artifacts or should we store them in s3. 
+7- How to upgrade plugins in Jenkins. 
+8- Usermanagement in Jenkins. 
+9- Concepts about Gitlab runners. 
+10- How to upgrade Jenkins. 
+ 
+Ansible: 
+1- loops in Ansible. 
+2- Ansible Roles.
+3- Is Ansible idempotent? 
+4- Ansible script to install nginx. 
+5- Conditionals in Ansible. 
+
+
+
+1. What is the purpose of a NAT gateway, and what are some of its use cases?
+2. How do you decide which load balancer is best suited for an application?
+3. What are the key features of the Nginx service?
+4. What are the differences between a Network Load Balancer and an Application Load Balancer?
+5. Why is a DynamoDB table used to lock the Terraform state file?
+6. How can we manage the Terraform state file effectively?
+7. If you encounter an error with the `terraform plan` command, how would you troubleshoot it? What steps would you take?
+8. What stages are available in a Jenkins pipeline? How do you configure a webhook for auto-triggering builds?
+9. What DevSecOps tools have you used? How do you secure applications using these tools?
+10. How do you manage secrets in a Jenkins pipeline?
+11. How do you deploy a microservices application so that each service remains isolated?
+12. In a Dockerfile, what are the use cases for the `COPY` and `ADD` commands?
+13. Write a Dockerfile for a Node.js application, including the build and run commands.
+14. Briefly explain Kubernetes architecture, covering each component and its use case.
+15. How do you manage connectivity between multiple pods in a Kubernetes cluster?
+16. How do worker nodes communicate with the control plane (master node)?
+17. How can we increase the capacity of pods using the CLI (command line interface)?
+18. What are the use cases of EKS (Elastic Kubernetes Service)?
+19. If a new version fails, how would you roll it back?
+20. What is an Ansible playbook, and how does it work? How does Ansible handle variables differently from playbooks?
+21. How do you configure Grafana and Prometheus for monitoring?
+22. What steps would you take if an EC2 instance runs out of memory? Are there specific strategies you'd try first to increase its capacity?
+23. What are the major challenges you've faced in your role?
+
+
+
+ort 22 - SSH: For secure remote login and file transfers.
+Port 80 - HTTP: Standard port for unencrypted web traffic.
+Port 443 - HTTPS: Secure, encrypted web traffic.
+Port 3000 - Grafana: Used for monitoring and dashboards.
+Port 9090 - Prometheus: For collecting metrics and monitoring.
+Port 25 - SMTP: For sending emails.
+Port 53 - DNS: Resolves domain names to IP addresses.
+Port 3306 - MySQL: Default port for MySQL databases.
+Port 6379 - Redis: Fast in-memory data storage (caching).
+Port 5601 - Kibana: For visualizing data from Elasticsearch.
+Port 9100 - Node Exporter: Collects hardware and OS metrics for Prometheus.
+Port 3100 - Loki: Log aggregation system for storing and querying logs.
+Port 9200 - Elasticsearch: Used for full-text search and log analytics.
+Port 8080 - Tomcat: Default HTTP port for Apache Tomcat server.
+Port 5432 - PostgreSQL: Default port for PostgreSQL database connections.
+
+
+
+1. How do you create a file and a directory in Linux?
+
+Create a file: touch filename
+
+Create a directory: mkdir dirname
+
+2. How do you view the contents of a file?
+
+cat filename (entire file)
+
+less filename (page by page)
+
+head -n 10 filename (first 10 lines)
+
+tail -n 10 filename (last 10 lines)
+
+3. How do you copy, move, and delete files or directories?
+
+Copy: cp source destination
+
+Move: mv source destination
+
+Delete file: rm filename
+
+Delete directory: rm -r dirname
+
+4. How do you find the size of a file or directory?
+
+File: ls -lh filename
+
+Directory: du -sh dirname
+
+Permissions and Ownership
+
+5. How do you change file permissions?
+
+Example: chmod 755 filename
+(Owner: read/write/execute, Group: read/execute, Others: read/execute)
+
+6. How do you change file ownership?
+
+Example: chown user:group filename
+7. How do you find files with specific permissions?
+
+Example: find /path -type f -perm 644
+
+Process and System Monitoring
+
+8. How do you list all running processes?
+
+ps aux
+
+top or htop (real-time monitoring)
+
+9. How do you kill a process?
+
+Find the PID: ps aux | grep process_name
+
+Kill the process: kill -9 PID
+
+10. How do you check system resource usage?
+
+CPU and memory: top or htop
+
+Disk usage: df -h
+
+Memory usage: free -h
+
+Networking
+
+11. How do you check network connectivity?
+
+Ping a server: ping google.com
+
+12. How do you check open ports?
+
+netstat -tuln
+
+ss -tuln
+
+13. How do you check the IP address of your system?
+
+ifconfig (older systems)
+
+ip addr (modern systems)
+
+14. How do you download a file from the internet?
+Using wget: wget URL
+
+Using curl: curl -O URL
+
+*Search and Text Processing
+
+15. How do you search for a string in a file?
+
+grep "string" filename
+
+Recursive search in directories: grep -r "string" /path
+
+16. How do you sort and remove duplicates from a file?
+
+Sort: sort filename
+
+Remove duplicates: sort filename | uniq
+
+17. How do you count the number of lines, words, and characters in a file?
+
+wc filename
+
+18. How do you replace text in a file?
+
+Example using sed:
+sed -i 's/old_text/new_text/g' filename
+
+*Archiving and Compression
+
+19. How do you compress and extract files?
+
+Compress: tar -czvf archive.tar.gz file_or_directory
+
+Extract: tar -xzvf archive.tar.gz
+
+20. How do you list the contents of a tar file without extracting it?
+
+tar -tf archive.tar.gz
+
+*System Administration
+
+21. How do you check system uptime?
+
+uptime
+
+22. How do you view the last login details of users?
+
+last
+
+23. How do you schedule a task in Linux?
+
+Using cron:
+
+Edit cron jobs: crontab -e
+
+Example: 0 2 * * * /path/to/script (runs at 2 AM daily)
+24. How do you monitor log files in real-time?
+
+tail -f /var/log/syslog
+
+25. How do you check installed packages?
+
+Debian-based systems: dpkg -l
+
+Red Hat-based systems: rpm -qa
+
+Too many engineers assume that DevOps means: CI/CD pipelines.
+
+Nah. It's so much more than that.
+
+DevOps includes:
+
+Automated SSL Certificate Rotation
+
+Secret Management (e.g., Vault, SOPS)
+
+Canary Deployments with Progressive Rollouts
+
+Autoscaling with Metrics-Driven Policies
+
+Immutable Infrastructure with Blue-Green Deployments
+
+Debugging with Distributed Tracing
+
+Cluster Autoscaler Tuning for Workload Spikes
+
+Self-Healing Infrastructure (e.g., Health Checks & Restart Policies)
+
+GitOps with Advanced Reconciliation Loops
+
+Service Mesh Implementations (e.g., mTLS, Traffic Shaping)
+
+I could go on...
+
+Operating tools is not Devops - just a part of it.
+
+Be open minded - learning becomes easy.
+
+
+
+1. Write a shell script to monitor the network connectivity of a server and log the results if it is unreachable.
+2. Create a script to check the available free memory on the system and alert the user if it falls below a threshold (e.g., 10%).
+3. Write a script that monitors the status of a list of processes and restarts them if they are not running.
+4. Write a script that downloads the latest backup file from a remote server and logs the download time.
+5. Create a script to automate the creation of a new user with specific permissions and home directory.
+6. Write a shell script to find all large files (greater than 1GB) in a directory and move them to another directory.
+7. Write a script to check the uptime of a server and log the time if the uptime is less than 24 hours.
+8. Create a script to check disk space usage on multiple servers using SSH and alert if any server exceeds the threshold.
+9. Write a script to fetch logs from a remote server and analyze the error messages within the logs.
+10. Create a script to check the status of a web application running on a remote server and restart it if it is down.
+11. Write a script to count the number of lines in all `.log` files in a specified directory.
+12. Write a shell script to compare two directories and display the files that are different or missing between them.
+13. Create a script to automatically remove old logs (older than 7 days) from a directory to free up space.
+14. Write a shell script to generate a report of all active users logged into the system.
+15. Create a script to monitor and log the size of log files in a directory, and alert if any file exceeds a set size.
+16. Write a script that automatically updates all installed packages on a system and reboots the system if needed.
+17. Write a shell script to rotate logs by compressing old log files and keeping a specified number of backups.
+18. Create a script to validate the integrity of files in a directory by checking their checksums (MD5/SHA).
+19. Write a script that checks for the presence of specific software on the system (e.g., Docker, Git) and installs it if missing.
+20. Create a script to automate the creation of an SSL certificate for a web server.
+
+
+
