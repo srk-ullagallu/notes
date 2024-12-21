@@ -203,12 +203,13 @@ tar xzf ./actions-runner-linux-x64-2.321.0.tar.gz
 read -p "Enter your GitHub repository URL (e.g., https://github.com/your-repo): " REPO_URL
 read -p "Enter your GitHub Actions Runner token: " RUNNER_TOKEN
 
-# Run the configuration script for GitHub Actions runner
-./config.sh --url "$REPO_URL" --token "$RUNNER_TOKEN"
+# Run the configuration script for GitHub Actions runner as ec2-user (non-root)
+log "Configuring GitHub Actions runner as ec2-user..."
+su - ec2-user -c "/home/ec2-user/actions-runner/config.sh --url '$REPO_URL' --token '$RUNNER_TOKEN'"
 
 # Create GitHub Actions runner service
 log "Creating GitHub Actions runner service..."
-tee /etc/systemd/system/github-runner.service <<EOF
+sudo tee /etc/systemd/system/github-runner.service <<EOF
 [Unit]
 Description=GitHub Actions Runner
 After=network.target
@@ -224,13 +225,14 @@ WantedBy=multi-user.target
 EOF
 
 # Reload systemd, enable and start the GitHub Actions runner service
-systemctl daemon-reload
-systemctl enable github-runner
-systemctl start github-runner
+sudo systemctl daemon-reload
+sudo systemctl enable github-runner
+sudo systemctl start github-runner
 
 # Check the status of the GitHub Actions runner service
-systemctl status github-runner
+sudo systemctl status github-runner
 
+log "GitHub Actions runner has been successfully configured and is running."
 log "GitHub Actions runner has been successfully configured and is running."
 
 log "${YELLOW}All installations are idempotent and complete!${NC}"
