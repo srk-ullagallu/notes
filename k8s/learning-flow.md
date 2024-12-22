@@ -72,6 +72,7 @@
 # Extened K8s
 - CRDS
 - Operator
+- Kro
 
 # Observability
 - Prometheus&Grafana
