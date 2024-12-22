@@ -17,10 +17,12 @@
 - Labels & Selectors,Annotatios
 - Namespaces
 - pod
+- initcontainers,sidecar,proxy
 
 # Workloads
 - ReplicaSet & Replication Controller
 - Deployment
+  - Scaling[HPA,KEDA]
 - Job
 - CronJob
 - DaemonSet
@@ -33,11 +35,20 @@
 - ExternalName
 - Headless Service
 - Ingress
+- CoreDNS,ExternalDNS
+- API GW
+- ISTIO
 
 # Storage
 - pv,pvc,sc
 - Static volume provisioning
 - Dynamic volume provisioning
+
+# Advance Scheduling
+- nodeselector
+- affinity
+- anti-affinity
+- Taints&Tolerations
 
 # Configuration
 - configmap
@@ -46,16 +57,19 @@
 
 # Security
 - RBAC
+- Service Account
+# Packaging&Templatizing
+- HELM 
+- Kustomization
 
 # Quotas
 - ResourceQuotas
 - HELM,Kustomization
-
-# phase-II
+# Nodes Scaling
+- Cluster Auto Scalar
 - Karpenter
-- KEDA
-- API GW
-- ISTIO
+
+# Extened K8s
 - CRDS
 - Operator
 
