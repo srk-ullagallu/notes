@@ -1,27 +1,27 @@
 # What is k8s?
 
 # Why K8s?
-[k8s archi and features](https://kubernetes.io/docs/concepts/overview/#why-you-need-kubernetes-and-what-can-it-do)
+[k8s archi and features](https://kubernetes.io/docs/concepts/overview/#why-you-need-kubernetes-and-what-can-it-do)[1]
 
 # k8s architecture
-[k8s architecture](https://kubernetes.io/docs/concepts/overview/components/)
+[k8s architecture](https://kubernetes.io/docs/concepts/overview/components/)[1]
 
 # ClusterSetup
-- kubeadm
-- kops
-- eks
+- kubeadm[1]
+- kops[1]
+- eks[1]
 - minikube
 - kind
 
 # Basics
-- Labels & Selectors,Annotatios
-- Namespaces
-- pod
+- Labels & Selectors[1],Annotatios
+- Namespaces[1]
+- pod[1]
 - initcontainers,sidecar,proxy
 
 # Workloads
-- ReplicaSet & Replication Controller
-- Deployment
+- ReplicaSet & Replication Controller[1]
+- Deployment[1]
   - Scaling[HPA,KEDA]
 - Job
 - CronJob
@@ -29,13 +29,13 @@
 - StatefulSet
 
 # Services[Networking]
-- ClusterIP
-- NodePort
-- LoadBalancer
+- ClusterIP[1]
+- NodePort[1]
+- LoadBalancer[1]
 - ExternalName
 - Headless Service
 - Ingress
-- CoreDNS,ExternalDNS
+- CoreDNS[1],ExternalDNS
 - API GW
 - ISTIO
 
