@@ -354,7 +354,8 @@ limits[no|gurantee] for resources if resources are avialable it will consume oth
 Resource Quotas easy to organize the efficiently resources by admin
 Based on requirement admin allocate particular compute capacity to the ns
 
-# 13-8-2024
+# 13-8-2024[Security[SA,RBAC]]
+
 56:42 OSI layer
 namespace level quotas and limits
 
@@ -370,7 +371,7 @@ K8s does not provide any authentication
 `ClusterRole`[cluster level]
 `CLusterRoleBinding`
 
-`SA`
+In k8s identity was provided by `service account` 
 
 `Cloud Trail` Monitoring each and everything happend in the aws account[everything tracked by here]
 
@@ -386,6 +387,9 @@ In k8s Objects are catagorized into multiple API's
 In k8s cluster every pod can talk to each other there is restriction however i want to start controlling that
 
 based on lebels and ip addresses
+
+OSI  has layers which is fundamentally communication layers how the computers communicate each other 
+
 
 There are 2 types of traffic
 - ingresss[incoming]
@@ -405,6 +409,9 @@ Nginx is a layer 7 software which is understands the request /api /transaction o
 It understanding the request `Layer7` is a content aware it is not dealing with contnent non-aware proxy
 
 Contenet non-aware is `Layer4`
+
+content aware layer7
+non-contnent aware layer4
 
 ingrees:
  - from:
