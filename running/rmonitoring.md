@@ -1,3 +1,5 @@
+
+# Obseevability[newrelic,prometheus&grafana,Elastic Stack]
 Four Golden Signals **Latency** **Traffic** **Errors** **Saturation**
  
 # 2-9-24
@@ -10,7 +12,16 @@ with monitoring we will understand behaviour of the application
 
 Newlic is a end to end paid monitoring tool[metrics,logging,traces]
 
-Application performacne monitoring tool[newrelic]
+Application performacne monitoring tool[newrelic] all apm tools are too much costly
+
+One tool for everything = new relic no need prometheus,grafana,elastic stack and kiali jaegar
+
+Traces = A Request Full journey Traces
+
+# OpenSource Observability Tools
+Metrics = Prometheus[scrape&store|metrics],Grafana[Create|DashBoards|Monitoring|the|system|state]
+Logs = Elastic Stack
+Traces = Kiali&Jaegar
 
 new relic is where dev,ops,security and business teams solve software performance problems with data
 
@@ -39,9 +50,24 @@ Require Singnificant of engineering time
 # 3-9-24
 you're always look into recent data not  very long data
 
-TSDB based on you can get the data based on graph you represent
+TSDB based on time  you can get the data based on graph you represent
 
-If you very long data db ops could be slowed
+every point of time you different data
+
+If you maintain v very long data db ops could be slowed
+
+prometheus concentrate more on collecting data,provides alerting mechanism,query language
+
+Prometheus it self is a single point of failure so thanos is a open source highly avialabe prometheus setup with long term storage capabilities
+
+victoria metrics it is simple solution
+
+grafana mimir
+
+for long term data we won't relay on prometheus for recent it is decent to get latest metrics data
+
+Prometheus = data collector
+Grafana    = data visualizor 
 
 maintainning static config is very difficult
 

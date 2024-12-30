@@ -549,6 +549,10 @@ watch "kubectl top pods"
 
 PT will conduct performance testing
 
+Wheather resources is performing well not performing well is not out job at this point of time not our concernat this point of time it our job any how we will take concern at monitoring time 
+
+Are you really application as expected or not 
+
 # 22-10-24
 
 `ISTIO` is dealing with communications
