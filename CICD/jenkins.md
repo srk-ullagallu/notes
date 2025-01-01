@@ -1,82 +1,30 @@
-`CI`  a developers merege their code to central repo frequntly as devops engineer we provide env that code was build and tested with automated fashion.
+### **What is Jenkins?**
+Jenkins is an open-source automation server used to implement Continuous Integration (CI) and Continuous Delivery (CD). It automates building, testing, and deploying applications and supports integration with various tools through plugins.
 
+---
 
-`pipeline` connecting multiple stages together like
-- checkout
-- source code analysis
-- owasp dependency check
-- Quality gates
-- test cases
-- docker build 
-- push to ecr
+### **Advantages**:
+- **Free and Open Source**: Cost-effective.
+- **Extensible**: Large plugin ecosystem for integrations.
+- **Cross-Platform**: Runs on multiple OS.
+- **Scalable**: Supports distributed builds.
+- **Community Support**: Active community for troubleshooting.
 
-It is a conitnuous process
+### **Disadvantages**:
+- **Maintenance Overhead**: Requires manual setup and updates.
+- **Complexity**: Can be challenging to manage in large-scale environments.
+- **Resource Intensive**: High resource usage with complex pipelines.
 
-CI process we execpt an end for pipeline
+---
 
-CI pipelines are we start and we can expect and end 
+### **Jenkins Master-Slave Setup**
+- **Master**: Handles job scheduling, UI, and job distribution.
+- **Slave (Agent)**: Executes jobs assigned by the master.
 
-Usually in organizations CI and CD pipelines are decoupled we are not going to do auto deployment to the prod
+---
 
-Actually CD pipeline has to deployment in dev and wait get sign off from the dev then then do in stage get sign off  and so on 
-
-env to env deployment you need to get signoff 
-
-Jenkins for CI
-
-GithuB for CD
-
-Developer adopt agile methdology to do developement
-
-Jira has stories 
-
-We are using github enterprise 
-
-On each and every commint we are going to run the pipeline
-
-code merge happen only PR[ReviewProcess]
-
-commit ids are not userfirendly so we are using tags
-
-So the pipeline that should support all the above scenarios 
-    - Developer commits should be detected 
-    - main commits should be detected
-    - tags should be detected
-After every detection pipeline should run for it's respective commit
-
-Why Jenkins is not good for CD purpose
-Since it does not have a flexibility to stop in b/w phase to phase and wait for some actions like approvals for a long time
-In CD process no visibility is very minamal
-
-IN CI jenkins is super tool ther is no competitor
-
-continous delivary
-manual release need to some approvals 
-
-continous deployment
-with automation release
-
-Without manual intervention releases happend in prod[This is not happend in my carrer i'm not experienced this this scary also]
-
-freestyle is a very basic
-
-pipeline is only work for only one scenario[onebranch[tag,story,commit]]
-
-multiBranch pipelne [it will detects a branches in vcs and it will the pipelines for each pipeline]
-
-declarative pipeline is easy to write the code having the syntax
-
-At a scale declarative pipeline cannot handle declarative pipeline has a limitation that is the reason I have changed my stance on declarative pipeline 
-
-BlueOcean
-PipelineStageView
-
-# 21-9-24
-Pipeline:MultiBranch
-Jenkins Installation with Ansible
-
-# 23-9-24
-
-
-
-
+### **Benefits of Master-Slave Setup**:
+1. **Scalability**: Distributes workloads across multiple nodes.
+2. **Performance**: Offloads job execution to slaves, freeing up master resources.
+3. **Flexibility**: Run different jobs on specific agents tailored to the environment.
+4. **Fault Tolerance**: Isolates failures to individual agents without affecting the master.
