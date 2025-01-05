@@ -116,20 +116,6 @@ networking:
 
 ---
 
-## 🌐 **Install Calico CNI Plugin**
-
-1. **Apply Calico Manifest:**  
-   ```bash
-   kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.27.0/manifests/calico.yaml
-   ```
-
-2. **Verify Calico Pods:**  
-   ```bash
-   kubectl get pods -n kube-system
-   ```
-
----
-
 ## ✅ **Verify Cluster and Networking**
 
 1. **Check Node Status:**  
