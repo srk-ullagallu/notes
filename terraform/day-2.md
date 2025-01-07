@@ -111,35 +111,91 @@
 
 ---
 
-### **6. Ingress Block**
-   - **Concept:**  
-     The `ingress` block is typically used in security group configurations to define the inbound traffic rules that allow specific ports, IP addresses, or CIDR blocks to access the resource.
-   - **Example:**  
-     Here’s how you can use an `ingress` block to allow HTTP traffic to your EC2 instance:
+### 🚀 **Dynamic Block in Terraform**
 
-   ```hcl
-   resource "aws_security_group" "example" {
-     name        = "example-security-group"
-     description = "Allow inbound HTTP traffic"
-     
-     ingress {
-       from_port   = 80
-       to_port     = 80
-       protocol    = "tcp"
-       cidr_blocks = ["0.0.0.0/0"]
-     }
+- **Concept:**  
+   A **`dynamic` block** in Terraform is used when you need to **generate multiple similar nested blocks** within a resource, such as `ingress` or `egress` in a security group.  
+   It helps avoid repetitive code and improves readability by dynamically creating nested blocks based on a set of inputs (e.g., a list or map).
 
-     egress {
-       from_port   = 0
-       to_port     = 0
-       protocol    = "-1"
-       cidr_blocks = ["0.0.0.0/0"]
-     }
-   }
-   ```
+---
 
-   - The `ingress` block allows traffic on port 80 (HTTP) from any IP address (`0.0.0.0/0`).
+### 🛠️ **Why Use a Dynamic Block?**  
+- To **avoid hardcoding multiple similar blocks**.  
+- To **make configurations scalable** based on a variable or data source.  
+- To **simplify management** of rules or configurations.  
 
+---
+
+### 📚 **Example of Dynamic Block with `ingress`:**  
+
+```hcl
+resource "aws_security_group" "example" {
+  name        = "example-security-group"
+  description = "Security group with dynamic ingress rules"
+
+  dynamic "ingress" {
+    for_each = var.ingress_rules
+    content {
+      from_port   = ingress.value.from_port
+      to_port     = ingress.value.to_port
+      protocol    = ingress.value.protocol
+      cidr_blocks = ingress.value.cidr_blocks
+    }
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
+variable "ingress_rules" {
+  type = list(object({
+    from_port   = number
+    to_port     = number
+    protocol    = string
+    cidr_blocks = list(string)
+  }))
+  default = [
+    {
+      from_port   = 80
+      to_port     = 80
+      protocol    = "tcp"
+      cidr_blocks = ["0.0.0.0/0"]
+    },
+    {
+      from_port   = 22
+      to_port     = 22
+      protocol    = "tcp"
+      cidr_blocks = ["0.0.0.0/0"]
+    }
+  ]
+}
+```
+
+---
+
+### ✅ **Explanation:**  
+1. **`dynamic "ingress"` Block:**  
+   - The `for_each` iterates over `var.ingress_rules`.  
+   - Each iteration creates an `ingress` block with the values from the list.  
+
+2. **Variable `ingress_rules`:**  
+   - A list of objects defines each ingress rule.  
+   - You can easily add or remove rules without modifying the resource code.
+
+---
+
+### 📊 **Key Difference Between Static and Dynamic `ingress`:**  
+| **Static Ingress Block** | **Dynamic Ingress Block** |  
+|---------------------------|---------------------------|  
+| Hardcoded rules | Rules generated dynamically from a variable or data source |  
+| Less scalable for multiple rules | Easily scalable for complex configurations |  
+| Repeated code blocks | Cleaner, reusable code |  
+
+Let me know if this clears up the concept or if you’d like me to simplify it further! 😊✨
 ---
 
 ### **7. Null Resource Block**
