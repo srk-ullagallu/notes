@@ -1,4 +1,3 @@
-### [Day-1]
 # Deployment evolution
 # What & Why K8s
 # K8s Architecture
