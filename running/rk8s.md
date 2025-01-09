@@ -486,9 +486,21 @@ Tolerations
 Higher Precedence
 
 # 22-8-24[storage]
+- create IAM role to provision EBS volumes
+- Assign IAM roles to EKS cluster causes overwhelming permissions to create EBS volumes[all the resources inside gets permissions]
+- Assign IAM roles to nodes [all the nodes,pods,containers gets the access]
+- Assign IAM role to particular pod like EBSCSI pod So pod is a different compute in a EKS we need to assign a that role pod how so that's why eks comes with an solutions is EKS OIDC [they come with their own identity provider i.e is OIDC] to bridge the role and service account we would use OIDC[IRSA-iamroleforserviceaccount]
+
+## Tasks
+- Terraform EKS module development
+- GithubActions to create cluster 
+
+
 # 23-8-24
 - cluster add ons
 - roboshop deployment
+
+- Helm is a package manager for k8s will help you in keep your code dry and make your code as package 
 
 # 26-8-24
 - Helm
