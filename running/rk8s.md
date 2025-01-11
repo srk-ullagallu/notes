@@ -509,9 +509,62 @@ Higher Precedence
 
 # 28-8-24
 - vault
+- GoDaddy External Secrets
 
 helm repo add external-secrets https://charts.external-secrets.io
 helm install external-secrets external-secrets/external-secrets
+
+
+ss.yaml
+```yaml
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: vault-token
+data:
+  token: aHZzLmMwUjkxamtSbVpJcGNnWWVpWnUzR2lNQg==
+---
+apiVersion: external-secrets.io/v1beta1
+kind: SecretStore
+metadata:
+  name: vault-backend
+spec:
+  provider:
+    vault:
+      server: "http://ws.bapatlas.site:8200/"
+      path: "kv"
+      version: "v2"
+      auth:
+        tokenSecretRef:
+          name: "vault-token"
+          key: "token"
+---
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: vault-example
+spec:
+  refreshInterval: "15s"
+  secretStoreRef:
+    name: vault-backend
+    kind: SecretStore
+  target:
+    name: test
+  # To pull the single secret
+  # data:
+  # - secretKey: NAME
+  #   remoteRef:
+  #     key: test
+  #     property: NAME
+  # To pull the complete secrets related to the any micro service
+  dataFrom:
+  - extract:
+      key: test
+```
+
+
+
 
 SecretStrore for every ns
 CLusterSecretStore for all ns in the cluster
