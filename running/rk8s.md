@@ -127,6 +127,14 @@ can you please explain docker build context how it is happend
 
 The challenges with container mainly is networking and storage
 
+- Master nodes manages the other nodes in the cluster
+
+- For example one container is running one node and another container running on another nodes if both are using same sharing disk is a costly[operational cost,engineering cost and end of the day ready for the challenges]  shared technology is never succed in the never so far 
+
+docker good at container eco system not at orchestration level
+
+- If 2 containers are running on different nodes the discovery is quite challenging latency is also higher
+
 In contaienrs one containers running on one node another on anther nodes sharing storage b/w containers is very costly 
 When it comes to the k8s k8s has it own wrapper around containers the storage mounting is ease[one|container|is|writing|another|reading]
 Shared storage is not succeede in the market
@@ -157,6 +165,7 @@ How ReplicaSet Konws this pod belongs to particular replicas by using pod has la
 - create pod with same labels that rs pod have
 - observe the behavious of that pod
 
+octant
 
 always maintain unique labels
 
@@ -199,6 +208,9 @@ The backbone of k8s is API server in k8s we have lot of API's
 Normal API it will understand your request based on that it will redirect appropriate place it does proxy
 
 kubectl api-versons
+
+crashloopback = container is dead k8s trying restart it
+
 
 **Architecure of K8s**
 
@@ -282,7 +294,9 @@ Deployment `Rotation of images chnages`
 
 - Difference b/w `shared fs` and `distributed fs`
 - Jobs used to run pods some sort of time not like 24/7 if the work is completed it will goes off
-
+- rotation of pods are happend via deployment
+- Deployment is a wrapper for replicaset and replicaset is a wrapper around pods
+  
 # 10-8-24
 
 services
@@ -509,9 +523,62 @@ Higher Precedence
 
 # 28-8-24
 - vault
+- GoDaddy External Secrets
 
 helm repo add external-secrets https://charts.external-secrets.io
 helm install external-secrets external-secrets/external-secrets
+
+
+ss.yaml
+```yaml
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: vault-token
+data:
+  token: aHZzLmMwUjkxamtSbVpJcGNnWWVpWnUzR2lNQg==
+---
+apiVersion: external-secrets.io/v1beta1
+kind: SecretStore
+metadata:
+  name: vault-backend
+spec:
+  provider:
+    vault:
+      server: "http://ws.bapatlas.site:8200/"
+      path: "kv"
+      version: "v2"
+      auth:
+        tokenSecretRef:
+          name: "vault-token"
+          key: "token"
+---
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: vault-example
+spec:
+  refreshInterval: "15s"
+  secretStoreRef:
+    name: vault-backend
+    kind: SecretStore
+  target:
+    name: test
+  # To pull the single secret
+  # data:
+  # - secretKey: NAME
+  #   remoteRef:
+  #     key: test
+  #     property: NAME
+  # To pull the complete secrets related to the any micro service
+  dataFrom:
+  - extract:
+      key: test
+```
+
+
+
 
 SecretStrore for every ns
 CLusterSecretStore for all ns in the cluster
