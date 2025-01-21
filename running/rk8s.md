@@ -144,12 +144,29 @@ That is main essense of understanding
 What makes k8s makes better than docker swarm
 k8s intriduces a POD
 
+docker has good ecosystem  at making containers
+containers are ephemeral containers life are short once container deleted we lost everything ip,storage
+
+pods has ip irrecpective of nof containers
+k8s has built in DNS server
+
+
+
 # 8-8-2024
+orchestrator  tells do that agent can take instructions and follow it
+
 
 In pod N/W and Storage are sharable where as in containers are different
 
 Discovery is quite challenge in container world but pod makes very easy the 2 containers communicate each other via localhost
 but in containers you're depends on external n/w latency higher
+
+pod belongs to same rs 
+always maintain unique labels
+
+some objects in the k8s are namepsace level objects some or cluster level objects
+
+crashloop back = container is dead again same container was restarted again and agian
 
 [kubectl|helm|terraform|ansible|jenkins|k9s] ---> all are client [Kube|API|Server]
 
@@ -158,7 +175,9 @@ pod is a smallest deployable unit
 
 ReplicaSet[Maintains|stable|set|of|relicas|at|any|time]
 
-How ReplicaSet Konws this pod belongs to particular replicas by using pod has labels and replicaset has labels
+How ReplicaSet Konws this pod belongs to particular replicas by using pod has labels and replicaset has matched labels
+
+To make the relation b/w 2 entities we can use labels and selectors
 
 **Execrsie**
 - create a rs with 3 pods
@@ -170,6 +189,18 @@ octant
 always maintain unique labels
 
 kubectl api-resources
+
+Pod Lifecycle
+-------------
+pending = due to lack of resource avialability pod goes to pending state
+running = pod has bound with nodes and all containers are created at least container is running 
+Succeeded = all containers in the pod have termiated succesfully and will not restarted
+Failed = in pod all containers are termianted and container existed with non-zero
+unkonwn = control plane does not have status about pod
+
+kubectl api-versions
+kubectl api-resources
+
 
 # 9-8-2024
 
@@ -312,6 +343,9 @@ Externalname is a cname records
 - IP tables are OS level firewall
 
 `CORE DNS`
+
+- How can i justify services have cluster IP and Headless service does not have an IP
+
 
 # 12-8-2024[statefulset]
 
