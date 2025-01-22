@@ -153,6 +153,8 @@ Actual Deployment pIpeline is dev once dev signoff go to next QA once QA is sign
 Jenkins is not for that 
 In jenkins we can hold the executor by entering sleep command but is not a literally stop recommend becuase background still executor executing sleep is not a ending of a process 
 
+only deployment context is only used 
+
 # 1-10-24
 
 github actions
