@@ -104,7 +104,7 @@ tag                    no                      no               yes             
 
 
 
-Declarative pipeline is good for single branch scenarion if it is multi branch it won't be a good choice for example we have when condition if it is a main run but what about if it is not main how can i control other stages
+Declarative pipeline is good for single branch pipelines scenario if it is multi branch it won't be a good choice for example we have when condition if it is a main run but what about if it is not main how can i control other stages
 
 jenkins shared lib
 
@@ -117,8 +117,8 @@ sh 'env'
 
 roboshop-devops-project-v3
 
-compile the code was only reqired for java and goland programming languages require
-nodejs and python does not require scripting languages does not require
+compile the code was only reqired for java and golang programming languages require
+nodejs and python scripting languages does not require
 
 In declarative pipeline first step would be declarative code checkoutSCM but in scripted pipeline it would be git checkout
 
