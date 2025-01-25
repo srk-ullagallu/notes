@@ -127,6 +127,67 @@ To achieve this, you will use **IAM Roles** and a **Trust Policy** to allow **Ac
 #### 4. **Vendor Assumes the Role**
    The vendor in Account B will use the `sts:AssumeRole` API or CLI to assume the `BackupAccessRole`. Once assumed, they receive temporary credentials to access the S3 bucket.
 
+#### **How Does the Vendor Do This?**
+The vendor in **Account B** will run a command like this:
+
+```bash
+aws sts assume-role \
+    --role-arn "arn:aws:iam::111122223333:role/BackupAccessRole" \
+    --role-session-name "VendorSession"
+```
+
+Here’s what the parts mean:
+- **`aws sts assume-role`**: This is the AWS command to assume a role.
+- **`--role-arn`**: The ARN (Amazon Resource Name) of the role they want to assume. This ARN belongs to the IAM role (`BackupAccessRole`) in **Account A**.
+- **`--role-session-name`**: A name for the session, used for tracking (can be any name like `"VendorSession"`).
+
+---
+
+#### **What Happens When They Run This Command?**
+1. AWS checks the **trust policy** of the role in **Account A** to see if **Account B** is allowed to assume the role.
+   - If the trust policy allows it (and it does in our case), AWS proceeds.
+
+2. AWS generates **temporary security credentials** for the vendor. These credentials include:
+   - **Access Key ID**
+   - **Secret Access Key**
+   - **Session Token**
+
+   These credentials give the vendor the ability to perform actions specified in the **permissions policy** of the role.
+
+3. The vendor uses these credentials to interact with AWS services (e.g., upload or download files from the S3 bucket).
+
+---
+
+#### **Example Output of the Command**
+When the vendor runs the `aws sts assume-role` command, AWS responds with temporary credentials like this:
+
+```json
+{
+  "Credentials": {
+    "AccessKeyId": "ASIAEXAMPLE",
+    "SecretAccessKey": "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY",
+    "SessionToken": "FQoGZXIvYXdzEEXAMPLE...",
+    "Expiration": "2025-01-26T12:34:56Z"
+  },
+  "AssumedRoleUser": {
+    "AssumedRoleId": "AROAEXAMPLE:VendorSession",
+    "Arn": "arn:aws:sts::111122223333:assumed-role/BackupAccessRole/VendorSession"
+  }
+}
+```
+
+---
+
+#### **How the Vendor Uses the Credentials**
+The vendor will configure these temporary credentials in their AWS CLI or SDK to access the S3 bucket. For example:
+
+```bash
+aws s3 ls s3://your-bucket-name/ \
+    --access-key "ASIAEXAMPLE" \
+    --secret-key "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY" \
+    --session-token "FQoGZXIvYXdzEEXAMPLE..."
+```
+
 ---
 
 ### Key Benefits:
@@ -138,3 +199,6 @@ To achieve this, you will use **IAM Roles** and a **Trust Policy** to allow **Ac
 
 3. **Least Privilege**:
    - You control **what** actions the role can perform on the S3 bucket using the attached permissions policy.
+
+
+
