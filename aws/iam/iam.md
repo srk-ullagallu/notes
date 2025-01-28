@@ -327,6 +327,3 @@ This example shows how to use a condition to allow access only from a specific I
 - **Monitor and Audit Permissions**: Regularly review policies to ensure they are up-to-date with the least privilege.
 
 Would you like to dive deeper into any specific aspect of IAM policies or need help with a specific policy example?
-
-
-### ABAC
