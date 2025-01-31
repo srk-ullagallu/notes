@@ -1,3 +1,39 @@
+### Process Management and isolation
+### Kernal Features like namespaces and cgroups
+### 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Containerization
 # What is Docker
 # Docker Architecture
