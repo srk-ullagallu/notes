@@ -24,8 +24,7 @@
 - labels & selectors, namespaces
 - ReplicaSet & Deployment
 # Day-6
-- services
-- ClusterIP,NodePort,LoadBalancer,ExternalName
+- services[ClusterIP,NodePort,LoadBalancer,ExternalName]
 - configmap and secrets
 - probes[liveness|rediness]
 # Day-7
@@ -46,6 +45,7 @@
 # Day-11
 - External Secret Operator
 - External DNS Controller
+- ReosurceQuotas
 # Day-12
 - Cluster creation using terraform
 # Day-13
