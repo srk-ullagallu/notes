@@ -1,10 +1,17 @@
 # Day-1[Docker]
-- What is Docker
-- What is Container
-- Difference b/w vm and container
-- Linux kernal features namespaces and Cgroups
-- In case of prcoess
-- In case of containers
+- Virtulization and Containerization
+- Docker
+- Container
+- Image and Container
+- VM & Container
+- Role of Kernal features like Namepsaces and cGroups in containers
+- Docker Architecture
+  - docker cli
+  - docker server[docker engine or docker daemon]
+  - container runtime
+  - docker images
+  - docker containers
+  - repositorys
 # Day-2
 - Basic Commands
 - Dockerfile instructions
