@@ -1,5 +1,13 @@
 # Day-1
-`physical machines` 
+**Deployment in Physical Machines**
+- Earlier applications was deployed in physical machines.
+- There was no way to define resource boundaries for applications in a physical server, and this caused resource allocation issues.
+- If multiple applications run on a physical server, one application might use most of the resources, causing others to slow down.
+- A solution for this would be to run each application on a different physical server.
+- But this didn’t work well because resources were wasted, and maintaining many servers was costly.
+
+**Deployment in Virtual MAchines**
+- Virtualization is to use to create multiple isolated vm's on single physical server
 
 `virtual machines`
 
