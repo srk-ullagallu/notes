@@ -1,4 +1,273 @@
 # Day-1
+`physical machines` 
+
+`virtual machines`
+
+`containerization`
+
+`docker`
+
+`container`
+
+`image`
+
+---
+### Linux Kernel Features: Namespaces and Cgroups
+- Process in Linux are share the resources
+Containers are possible because of these two core Linux kernel features:  
+
+### **📌 Namespaces** (Isolation)  
+Namespaces ensure that each container runs in its own environment without interfering with others.    
+- **USER Namespace**: Provides user-level isolation.  
+- **PID (Process ID)**: Isolates process IDs, ensuring each container has its own process space.
+- **NET (Networking)**: Provides separate network interfaces for each container.
+- **MNT (Mount)**: Controls file system access within a container.
+- **UTS (Unix Timesharing System)**: Allows each container to have its own hostname.
+- **IPC (Inter-Process Communication)**: Isolates shared memory and message queues.
+
+### **📌 Cgroups (Resource Management)**  
+Cgroups control resource usage (CPU, memory, disk I/O) for containers to prevent one from consuming too many resources.  
+- **CPU Cgroup** – Limits CPU usage per container.  
+- **Memory Cgroup** – Restricts RAM allocation per container.  
+- **I/O Cgroup** – Controls disk access speed. 
+
+
+---
+### Docker Architecture
+1. **Docker CLI**: User interacts with Docker using commands.
+2. **Docker Daemon**: Manages Docker objects and executes commands.
+3. **Container Runtime**: Runs containers.
+4. **Images**: Templates for containers.
+5. **Containers**: Runnable instances of images.
+6. **Repositories**: Store and share images.
+
+---
+
+### **Visual Representation of Docker Architecture**
+
+```
++-------------------+       +-------------------+       +-------------------+
+|   Docker CLI      | <---> | Docker Daemon     | <---> | Container Runtime |
+| (User Interface)  |       | (Docker Engine)   |       | (runc, containerd)|
++-------------------+       +-------------------+       +-------------------+
+                                      |
+                                      v
+                              +-------------------+
+                              | Docker Images     |
+                              | (Read-only)       |
+                              +-------------------+
+                                      |
+                                      v
+                              +-------------------+
+                              | Docker Containers |
+                              | (Runnable)        |
+                              +-------------------+
+                                      |
+                                      v
+                              +-------------------+
+                              | Repositories      |
+                              | (Docker Hub, etc.)|
+                              +-------------------+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# Day-1
 ---
 ## **1.Virtualization and Containerization**
 Virtualization and containerization are two approaches to running multiple applications on the same physical hardware efficiently.
@@ -39,87 +308,5 @@ A **container** is a lightweight, standalone, and executable package that includ
 **Containers are more efficient than VMs** because they don’t require an additional OS. 
 ---
 
-# **5. Linux Kernel Features: Namespaces and Cgroups**  
-Containers are possible because of these two core Linux kernel features:  
 
-### **📌 Namespaces** (Isolation)  
-Namespaces ensure that each container runs in its own environment without interfering with others.    
-- **USER Namespace**: Provides user-level isolation.  
-- **PID (Process ID)**: Isolates process IDs, ensuring each container has its own process space.
-- **NET (Networking)**: Provides separate network interfaces for each container.
-- **MNT (Mount)**: Controls file system access within a container.
-- **UTS (Unix Timesharing System)**: Allows each container to have its own hostname.
-- **IPC (Inter-Process Communication)**: Isolates shared memory and message queues.
 
-### **📌 Cgroups (Resource Management)**  
-Cgroups control resource usage (CPU, memory, disk I/O) for containers to prevent one from consuming too many resources.  
-- **CPU Cgroup** – Limits CPU usage per container.  
-- **Memory Cgroup** – Restricts RAM allocation per container.  
-- **I/O Cgroup** – Controls disk access speed. 
-
-##  **6.Docker Architecture**
-
-### **Docker CLI**
-- A command-line tool used to interact with the Docker Daemon.
-- Commands: `docker build`, `docker run`, `docker pull`, etc.
-
-### **Docker Server (Docker Engine/Docker Daemon)**
-- A background service that manages Docker objects (images, containers, networks, volumes).
-- Listens for Docker API requests and executes them.
-
-### **Container Runtime**
-- Responsible for running containers.
-- Examples: `runc`, `containerd`.
-
-### **Docker Images**
-- Read-only templates used to create containers.
-- Built from a **Dockerfile**.
-- Stored in **registries** (e.g., Docker Hub).
-
-### **Docker Containers**
-- Runnable instances of Docker images.
-- Isolated environments for running applications.
-
-### **Repositories**
-- A collection of Docker images (e.g., on Docker Hub).
-- Can be public or private.
-- Used to store and share images.
-
----
-
-## **Summary of Docker Architecture**
-1. **Docker CLI**: User interacts with Docker using commands.
-2. **Docker Daemon**: Manages Docker objects and executes commands.
-3. **Container Runtime**: Runs containers.
-4. **Images**: Templates for containers.
-5. **Containers**: Runnable instances of images.
-6. **Repositories**: Store and share images.
-
----
-
-### **Visual Representation of Docker Architecture**
-
-```
-+-------------------+       +-------------------+       +-------------------+
-|   Docker CLI      | <---> | Docker Daemon     | <---> | Container Runtime |
-| (User Interface)  |       | (Docker Engine)   |       | (runc, containerd)|
-+-------------------+       +-------------------+       +-------------------+
-                                      |
-                                      v
-                              +-------------------+
-                              | Docker Images     |
-                              | (Read-only)       |
-                              +-------------------+
-                                      |
-                                      v
-                              +-------------------+
-                              | Docker Containers |
-                              | (Runnable)        |
-                              +-------------------+
-                                      |
-                                      v
-                              +-------------------+
-                              | Repositories      |
-                              | (Docker Hub, etc.)|
-                              +-------------------+
-```
