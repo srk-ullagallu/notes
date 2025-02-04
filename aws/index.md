@@ -7,6 +7,8 @@
 - IAM
 # Compute
 - EC2
+- ELB
+- ASG
 - Lambda Functions
 # Storage
 - S3
@@ -22,6 +24,16 @@
 - ECS
 - EKS
 - ECR[Repo]
+# CI/CD
+- Code Commit
+- Code Build
+- Code Deploy
+
+
+
+
+
+
 
 # Terminology
 - HA
