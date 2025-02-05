@@ -8,8 +8,9 @@
 - Network Protocols & Security
 - TroubleShooting
   - ping,traceroute,netstat
-  - tcpdump,wireshark
+  - tcpdump
   - Latency & Bandwidth Monitoring
+- SSL Basics & SSL termination
 
 # VPC
 - Subnets[private,public]
@@ -19,6 +20,7 @@
 - SG
 - NACLS
 - Peering
+- VPC flow logs
 - Endpoints[GW,Interface]
 - TransitGW
 - Traffic Mirroring[phase-2]
@@ -27,12 +29,15 @@
 - public & private hosted zones
 - Record Types & Routing policies
 - Resolver
-
-# CloudFront
-
 # ELB
+- What is ELB service
+- What features it provide
 - ALB
+  - Features of ALB
 - NLB
+  - static ip
+  - features of NLB
+- TG
 - GWLB[phase-2]
-
+# CloudFront
 # APIGW
