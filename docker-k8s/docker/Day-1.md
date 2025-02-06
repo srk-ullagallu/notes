@@ -82,13 +82,7 @@ Cgroups control resource usage (CPU, memory, disk I/O) for containers to prevent
                               +-------------------+
 ```
 
-
-
-
-
-
-
- ## **2. What is Docker? Benefits of Docker?**  
+## **2. What is Docker? Benefits of Docker?**  
 Docker is a containerization tool used to package applications along with their dependencies into lightweight, portable containers. It eliminates the "works on my machine" issue by ensuring the same environment across development, testing, and production.
 
 ### **✅ Benefits of Docker:**  
