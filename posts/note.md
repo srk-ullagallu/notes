@@ -23,6 +23,7 @@
 - Docker Compose
 - Docker Best practices
 # Day-4
+- why don't choose docker,docker-compose,docker swarm and ECS to run containers
 - What is k8s
 - Why K8s and features
 - K8s Architecture
