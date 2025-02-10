@@ -128,3 +128,10 @@ systemctl start docker
 usermod -aG docker ec2-user
 curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
+
+
+# What is Docker
+# What is Container
+# Difference b/w vm and containers
+# What is virtualization and containerization
+# What are namespaces and cgroups
