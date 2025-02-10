@@ -21,6 +21,9 @@ Image Creation: You can create Docker images, which are lightweight and portable
 - **Consistency** – The same image runs on all environments, reducing compatibility issues.
 **image & container**
 An image is a read-only template. When you execute an image, it creates a container, which is a lightweight, running instance of that image. The container has its own set of resources.
+
+Linux kernel creates an instance of that program in memory, assigns it resources, and gives it a unique Process ID (PID)—this is called a process
+
 ### Linux Kernel Features: Namespaces and Cgroups
 
 Namespaces and cgroups are two kernel features. Namespaces provide isolation for processes, so each container has its own users, network stack, hostname, and IPC namespace, preventing interference with other processes. Cgroups allow us to restrict the system resource utilization of containers.
@@ -85,7 +88,7 @@ Cgroups control resource usage (CPU, memory, disk I/O) for containers to prevent
                               +-------------------+
 ```
 
-## **2. What is Docker? Benefits of Docker?**  
+## **What is Docker? Benefits of Docker?**  
 Docker is a containerization tool used to package applications along with their dependencies into lightweight, portable containers. It eliminates the "works on my machine" issue by ensuring the same environment across development, testing, and production.
 
 ### **✅ Benefits of Docker:**  
@@ -96,7 +99,7 @@ Docker is a containerization tool used to package applications along with their 
 - **Scalability** – Easily scale applications up or down based on demand.  
 - **Consistency** – The same image runs on all environments, reducing compatibility issues.  
 ---
-## **3. What is a Container? Benefits of a Container?**  
+## ** What is a Container? Benefits of a Container?**  
 A **container** is a lightweight, standalone, and executable package that includes everything needed to run a piece of software, such as the code, runtime, libraries, and system tools. Containers are isolated from each other and the host system, ensuring that they run consistently across different environments.  
 
 ### **✅ Benefits of Containers:**  
@@ -105,7 +108,7 @@ A **container** is a lightweight, standalone, and executable package that includ
 - **Better Isolation** – Containers run independently, preventing conflicts between applications.  
 - **Simplifies DevOps** – Developers and operations teams can work with the same container images in different environments.  
 ---
-## **4. Difference Between VM and Container**  
+## **Difference Between VM and Container**  
 
 | Feature           | Virtual Machine (VM) | Container |
 |------------------|---------------------|-----------|
@@ -118,9 +121,6 @@ A **container** is a lightweight, standalone, and executable package that includ
 
 **Containers are more efficient than VMs** because they don’t require an additional OS. 
 ---
-
-
-
 # docker installation
 #!/bin/bash
 dnf install -y git docker tmux tree
