@@ -16,9 +16,10 @@
 - Basic Commands
 - Dockerfile instructions
 - Docker Layers
-- Docker volumes[emtydir,named,annymous] 
+- instana project creation
 - Removing Dangling images
 # Day-3
+- Docker volumes[named,annymous,bindmounts] 
 - Docker networking
 - Docker Compose
 - Docker Best practices
