@@ -25,12 +25,15 @@ An image is a read-only template. When you execute an image, it creates a contai
 
 Namespaces and cgroups are two kernel features. Namespaces provide isolation for processes, so each container has its own users, network stack, hostname, and IPC namespace, preventing interference with other processes. Cgroups allow us to restrict the system resource utilization of containers.
 
-In Linux, all processes share the system's resources, and they are designed to be shareable, using CPU, memory, and other resources based on their needs.
-
 System point of view container also a process with better isolation with kernal features like namespaces and cgroups
 Namespaces help containers get their own set of users, network stack, file system, DNS, and hostnames. The IPC namespace ensures that one container doesn't interfere with another, providing isolation between them. Cgroups are used to restrict the resource utilization of containers, ensuring they don’t consume more than their allocated share of CPU, memory, or other system resources.
 
 The IPC (Inter-Process Communication) namespace ensures that containers have isolated communication mechanisms, such as shared memory, message queues, and semaphores. This prevents one container from interfering with the IPC resources of another container, ensuring better isolation between them.
+
+- One container’s shared memory **won’t** be visible to another container.  
+- One container’s message queues **won’t** be accessible by processes outside.  
+
+In Linux, all processes share the system's resources, and they are designed to be shareable, using CPU, memory, and other resources based on their needs.
 
 ### **📌 Namespaces** (Isolation)  
 Namespaces ensure that each container runs in its own environment without interfering with others.    
@@ -118,3 +121,10 @@ A **container** is a lightweight, standalone, and executable package that includ
 
 
 
+# docker installation
+#!/bin/bash
+dnf install -y git docker tmux tree
+systemctl start docker
+usermod -aG docker ec2-user
+curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose

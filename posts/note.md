@@ -16,9 +16,9 @@
 - Basic Commands
 - Dockerfile instructions
 - Docker Layers
+- Docker volumes[emtydir,named,annymous] 
 - Removing Dangling images
 # Day-3
-- Docker volumes 
 - Docker networking
 - Docker Compose
 - Docker Best practices
@@ -47,8 +47,10 @@
   - Taints & Tolerations
 # Day-9
 - RBAC
+- SA
 - IAM Users link with Service Account using OIDC
 # Day-10
+- Network Policies
 - Ingress
 # Day-11
 - External Secret Operator
@@ -60,6 +62,7 @@
 - Cluster Upgradation
 # Day-14
 - Helm charts
+- Helmify instana
 # Day-15
 - Monitoring
 
