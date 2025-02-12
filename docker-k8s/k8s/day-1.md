@@ -95,3 +95,11 @@ In EKS, the `Cloud Controller Manager` manages integration with AWS cloud servic
 
 
 
+In **Kubernetes**, container states inside a Pod:  
+✅ **Pending** → Waiting to start  
+✅ **Running** → Application is active  
+✅ **Succeeded** → Completed successfully  
+✅ **Failed** → Crashed or exited with an error  
+✅ **Unknown** → Status can't be determined 
+
+

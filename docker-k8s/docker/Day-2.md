@@ -5,7 +5,19 @@
 - **Stop** → `docker stop container_id` → Gracefully stops a running container.  
 - **Pause** → `docker pause container_id` → Freezes a running container.  
 - **Unpause** → `docker unpause container_id` → Resumes a paused container.  
-- **Remove Container** → `docker rm container_id` → Deletes a stopped container.  
+- **Remove Container** → `docker rm container_id` → Deletes a stopped container. 
+
+### **Container Life Cycle - Simple Points**  
+
+1. **Created** – Container is created but not running.  
+2. **Running** – Container is actively running the application.  
+3. **Paused** – Container is temporarily frozen (stopped but not exited).  
+4. **Stopped** – Container is shut down but still exists.  
+5. **Restarting** – Container is stopping and starting again.  
+6. **Exited** – Container has stopped permanently.  
+7. **Removed** – Container is deleted from the system.  
+
+
 
 #### **2. Image Management**  
 - **Remove Image** → `docker rmi image_id` → Deletes a Docker image.  

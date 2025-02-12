@@ -1,30 +1,12 @@
 # Deployment in Physical Virtual and containers
 
-1. Earlier, applications ran on physical machines without any resource limits.  
-2. If one application used too many resources, it could slow down or crash other applications.  
-3. To avoid this, companies started running each application on a separate physical machine.  
-4. However, this approach was expensive because each machine was underutilized.  
-5. A better solution was needed to efficiently use system resources while keeping applications isolated.
+Earlier, applications were run on physical machines, but there was no mechanism to limit how much system resources an application could consume. So, if one application used more resources, it could cause performance issues or even crash other applications. The solution was to run each application on a separate physical machine, but this was a costly approach.
 
 - **Virtualization**: Creates multiple virtual machines (VMs) on a single host, each with its own OS.
-1. Running each application on a separate physical machine was costly and inefficient.  
-2. Virtualization solved this by allowing multiple independent VMs on a single physical machine.  
-3. Each VM provides strong isolation and has its own dedicated OS.  
-4. This improved resource utilization and reduced hardware costs.  
-5. With application modernization, the backend was decoupled into multiple components.  
-6. Running each component in a separate VM led to resource underutilization.  
-7. Since each VM has a full OS, scaling and boot times became slow (taking minutes).  
-8. A more efficient solution was needed to optimize resource usage and improve scalability.
+To overcome the cost of running each application on a separate physical machine, we can use virtualization. Virtualization allows us to create independent VMs on a physical machine, providing strong isolation between the VMs. This helps in utilizing the physical machine's resources more effectively. It's hardware-level isolation, and each VM has its own dedicated OS. With the process of application modernization, the backend was decoupled into multiple components, and I don't need a full OS for each component. Running each component in a separate VM leads to resource underutilization, and since each VM has a full OS, scaling and boot times can take minutes.
 
 - **Containerization**: Runs multiple isolated applications using a shared OS kernel, making it more lightweight and efficient.
-1. Containerization eliminates the need for a full OS for each application component.  
-2. A container includes only the bare minimum OS, the app, its dependencies, and system libraries.  
-3. Containers share the host machine’s OS as a read-only copy instead of having their own OS.  
-4. This minimal setup enables faster boot-up and quicker scaling.  
-5. Containers use software-level virtualization, unlike VMs, which use hardware-level isolation.  
-6. In a microservices architecture, development happens rapidly for faster releases.  
-7. Containers are easy to move across platforms, making deployments more flexible.  
-8. They spin up quickly and scale efficiently, improving overall system performance.
+Containerization for running microservices doesn't require a full OS—just the bare minimum OS, the app, its dependencies, and system libraries. Containers don't have a full OS; they use the host machine's OS as a read-only copy to run. This minimal OS setup brings benefits like faster boot-up and quicker scaling. It's a software-level virtualization. In the microservices world, development happens rapidly for faster releases, and containers are easy to move across platforms. They're also faster to spin up and scale.
 
 Virtualization and containerization are two approaches to running multiple applications on the same physical hardware efficiently.
 ---
@@ -102,20 +84,35 @@ Cgroups control resource usage (CPU, memory, disk I/O) for containers to prevent
 
 ## **Difference Between VM and Container**  
 
-| Feature           | Virtual Machine (VM) | Container |
-|------------------|---------------------|-----------|
-| **Size** | Large (GBs) | Small (MBs) |
-| **Startup Time** | Slow (OS boot required) | Fast (just starts the app) |
-| **Resource Usage** | High (each VM has its own OS) | Low (shares host OS kernel) |
-| **Isolation** | Complete (separate OS per VM) | Process-level (namespaces, cgroups) |
-| **Performance** | Slower due to OS overhead | Faster as there is no extra OS |
-| **Portability** | Less portable (depends on OS) | Highly portable (runs anywhere) |
+### **Virtualization vs. Containerization**  
 
-**Containers are more efficient than VMs** because they don’t require an additional OS. 
+| **Aspect**          | **Virtualization** (VMs) | **Containerization** (Containers) |  
+|--------------------|------------------------|---------------------------------|  
+| **Isolation Type** | **Hardware-level** isolation | **Software-level** isolation |  
+| **OS Requirement** | Each VM has a **full OS** | Shares the **host OS kernel** |  
+| **Resource Usage** | Requires more CPU, RAM, and storage | Lightweight, uses fewer resources |  
+| **Startup Time**   | Takes **minutes** to boot | Starts in **seconds** |  
+| **Performance**    | Slightly slower due to OS overhead | Faster as it avoids full OS overhead |  
+| **Use Case**       | Best for running **different OSs** on the same host | Best for **microservices and scalable apps** |  
+
+✅ **Virtualization** → Runs multiple OSs on a single machine.  
+✅ **Containerization** → Runs multiple apps using a shared OS for efficiency.
 ---
 
-# What is Docker
-# What is Container
-# Difference b/w vm and containers
-# What is virtualization and containerization
-# What are namespaces and cgroups
+### **Meaning of Isolation in Virtualization & Containerization**  
+
+**Isolation** means keeping applications and their dependencies **separated** from each other to prevent conflicts, improve security, and ensure stability.  
+
+#### **1. Isolation in Virtualization (VMs) → Hardware-Level Isolation**  
+- Each VM runs its **own operating system** on top of a **hypervisor**.  
+- Resources (CPU, memory, storage) are **allocated separately** to each VM.  
+- Even if one VM crashes, it does not affect other VMs.  
+- Example: Running **Windows and Linux VMs** on the same host.  
+
+#### **2. Isolation in Containerization → Software-Level Isolation**  
+- Containers **share** the **host OS kernel** but keep applications **separate**.  
+- Each container has its **own file system, network, and process space**.  
+- Containers are **lightweight** compared to VMs but still **prevent conflicts**.  
+- Example: Running multiple **Node.js and Python apps** in different containers on the same host.  
+
+✅ **Isolation prevents interference between applications** while allowing them to run efficiently. 🚀
