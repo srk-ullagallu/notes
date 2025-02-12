@@ -1,16 +1,34 @@
-# Day-1
-**Deployment in Physical Machines**
-Earlier, applications were run on physical machines, but there was no mechanism to limit how much system resources an application could consume. So, if one application used more resources, it could cause performance issues or even crash other applications. The solution was to run each application on a separate physical machine, but this was a costly approach.
-**Deployment in Virtual Machines**
-To overcome the cost of running each application on a separate physical machine, we can use virtualization. Virtualization allows us to create independent VMs on a physical machine, providing strong isolation between the VMs. This helps in utilizing the physical machine's resources more effectively. It's hardware-level isolation, and each VM has its own dedicated OS. With the process of application modernization, the backend was decoupled into multiple components, and I don't need a full OS for each component. Running each component in a separate VM leads to resource underutilization, and since each VM has a full OS, scaling and boot times can take minutes.
-**Deployment in Containers**
-Containerization for running microservices doesn't require a full OS—just the bare minimum OS, the app, its dependencies, and system libraries. Containers don't have a full OS; they use the host machine's OS as a read-only copy to run. This minimal OS setup brings benefits like faster boot-up and quicker scaling. It's a software-level virtualization. In the microservices world, development happens rapidly for faster releases, and containers are easy to move across platforms. They're also faster to spin up and scale.
+# Deployment in Physical Virtual and containers
+
+1. Earlier, applications ran on physical machines without any resource limits.  
+2. If one application used too many resources, it could slow down or crash other applications.  
+3. To avoid this, companies started running each application on a separate physical machine.  
+4. However, this approach was expensive because each machine was underutilized.  
+5. A better solution was needed to efficiently use system resources while keeping applications isolated.
+
+- **Virtualization**: Creates multiple virtual machines (VMs) on a single host, each with its own OS.
+1. Running each application on a separate physical machine was costly and inefficient.  
+2. Virtualization solved this by allowing multiple independent VMs on a single physical machine.  
+3. Each VM provides strong isolation and has its own dedicated OS.  
+4. This improved resource utilization and reduced hardware costs.  
+5. With application modernization, the backend was decoupled into multiple components.  
+6. Running each component in a separate VM led to resource underutilization.  
+7. Since each VM has a full OS, scaling and boot times became slow (taking minutes).  
+8. A more efficient solution was needed to optimize resource usage and improve scalability.
+
+- **Containerization**: Runs multiple isolated applications using a shared OS kernel, making it more lightweight and efficient.
+1. Containerization eliminates the need for a full OS for each application component.  
+2. A container includes only the bare minimum OS, the app, its dependencies, and system libraries.  
+3. Containers share the host machine’s OS as a read-only copy instead of having their own OS.  
+4. This minimal setup enables faster boot-up and quicker scaling.  
+5. Containers use software-level virtualization, unlike VMs, which use hardware-level isolation.  
+6. In a microservices architecture, development happens rapidly for faster releases.  
+7. Containers are easy to move across platforms, making deployments more flexible.  
+8. They spin up quickly and scale efficiently, improving overall system performance.
 
 Virtualization and containerization are two approaches to running multiple applications on the same physical hardware efficiently.
-- **Virtualization**: Creates multiple virtual machines (VMs) on a single host, each with its own OS.
-- **Containerization**: Runs multiple isolated applications using a shared OS kernel, making it more lightweight and efficient.
-
-**Docker**
+---
+# Docker
 Docker is a Containerization tools allows you to package applications and their dependencies into containers, ensuring consistency across different environments.
 Image Creation: You can create Docker images, which are lightweight and portable, making it easy to share and deploy applications.
 - **Lightweight** – No need for a full OS, only the application and its dependencies.  
@@ -24,6 +42,34 @@ An image is a read-only template. When you execute an image, it creates a contai
 
 Linux kernel creates an instance of that program in memory, assigns it resources, and gives it a unique Process ID (PID)—this is called a process
 
+# docker installation
+#!/bin/bash
+dnf install -y git docker tmux tree
+systemctl start docker
+usermod -aG docker ec2-user
+curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+chmod +x /usr/local/bin/docker-compose
+
+---
+
+## **Docker Objects**  
+- **Images**: Read-only templates used for creating containers. An image includes a base OS, application code, application dependencies, and required system dependencies.  
+- **Containers**: Running instances of images. A container is like a lightweight virtual machine with read-write capabilities. It can be created, started, stopped, paused, resumed, and removed.  
+- **Networks**: Enable communication between containers or expose a container for external access over the internet.  
+- **Volumes**: Containers are ephemeral, meaning their data is not persistent and is lost when the container stops or is removed. Volumes help persist data across container restarts.  
+
+---
+
+## **Docker Architecture**  
+1. **Docker CLI**: A command-line interface used to interact with Docker by running commands.  
+2. **Docker Daemon**: The server process responsible for managing Docker objects such as images, containers, volumes, and networks.  
+3. **REST API**: Provides a programmatic interface to manage Docker objects.  
+4. **Container Runtime**: The component that actually runs the containers.  
+5. **Images**: Pre-built templates used to create containers.  
+6. **Containers**: Running instances of images that execute applications in isolated environments.  
+7. **Repositories**: Storage locations (e.g., Docker Hub, AWS ECR) where images are stored and shared.  
+
+---
 ### Linux Kernel Features: Namespaces and Cgroups
 
 Namespaces and cgroups are two kernel features. Namespaces provide isolation for processes, so each container has its own users, network stack, hostname, and IPC namespace, preventing interference with other processes. Cgroups allow us to restrict the system resource utilization of containers.
@@ -53,61 +99,7 @@ Cgroups control resource usage (CPU, memory, disk I/O) for containers to prevent
 - **Memory Cgroup** – Restricts RAM allocation per container.  
 - **I/O Cgroup** – Controls disk access speed. 
 ---
-### Docker Architecture
-1. **Docker CLI**: User interacts with Docker using commands.
-2. **Docker Daemon**: Manages Docker objects and executes commands.
-3. **Container Runtime**: Runs containers.
-4. **Images**: Templates for containers.
-5. **Containers**: Runnable instances of images.
-6. **Repositories**: Store and share images.
----
-### **Visual Representation of Docker Architecture**
 
-```
-+-------------------+       +-------------------+       +-------------------+
-|   Docker CLI      | <---> | Docker Daemon     | <---> | Container Runtime |
-| (User Interface)  |       | (Docker Engine)   |       | (runc, containerd)|
-+-------------------+       +-------------------+       +-------------------+
-                                      |
-                                      v
-                              +-------------------+
-                              | Docker Images     |
-                              | (Read-only)       |
-                              +-------------------+
-                                      |
-                                      v
-                              +-------------------+
-                              | Docker Containers |
-                              | (Runnable)        |
-                              +-------------------+
-                                      |
-                                      v
-                              +-------------------+
-                              | Repositories      |
-                              | (Docker Hub, etc.)|
-                              +-------------------+
-```
-
-## **What is Docker? Benefits of Docker?**  
-Docker is a containerization tool used to package applications along with their dependencies into lightweight, portable containers. It eliminates the "works on my machine" issue by ensuring the same environment across development, testing, and production.
-
-### **✅ Benefits of Docker:**  
-- **Lightweight** – No need for a full OS, only the application and its dependencies.  
-- **Portable** – Run anywhere, from local machines to cloud environments.  
-- **Fast Deployment** – Containers start in seconds.  
-- **Efficient Resource Usage** – Containers share the host OS kernel, making them lightweight and fast compared to virtual machines (VMs).  
-- **Scalability** – Easily scale applications up or down based on demand.  
-- **Consistency** – The same image runs on all environments, reducing compatibility issues.  
----
-## ** What is a Container? Benefits of a Container?**  
-A **container** is a lightweight, standalone, and executable package that includes everything needed to run a piece of software, such as the code, runtime, libraries, and system tools. Containers are isolated from each other and the host system, ensuring that they run consistently across different environments.  
-
-### **✅ Benefits of Containers:**  
-- **Uses Less Resources** – No need to install a full OS for every application.  
-- **Faster Startup** – No OS boot required, just starts the application.  
-- **Better Isolation** – Containers run independently, preventing conflicts between applications.  
-- **Simplifies DevOps** – Developers and operations teams can work with the same container images in different environments.  
----
 ## **Difference Between VM and Container**  
 
 | Feature           | Virtual Machine (VM) | Container |
@@ -121,14 +113,6 @@ A **container** is a lightweight, standalone, and executable package that includ
 
 **Containers are more efficient than VMs** because they don’t require an additional OS. 
 ---
-# docker installation
-#!/bin/bash
-dnf install -y git docker tmux tree
-systemctl start docker
-usermod -aG docker ec2-user
-curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-chmod +x /usr/local/bin/docker-compose
-
 
 # What is Docker
 # What is Container
