@@ -137,27 +137,6 @@
 ✅ **Multi-stage builds keep images lightweight.**  
 ✅ **Cache busting should be managed carefully** to avoid unnecessary rebuilds.
 
-
-### **Docker Volumes (Simple Explanation)**  
-
-#### **1. Bind Mounts**  
-- Maps a specific directory from the host machine to the container.  
-- Changes made in the container reflect on the host and vice versa.  
-- Used when the container needs direct access to host files.  
-- Example: `docker run -v /host/path:/container/path my-app`  
-
-#### **2. Named Volumes**  
-- Managed by Docker and stored in `/var/lib/docker/volumes/`.  
-- Not tied to a specific host path, making it easier to manage and share between containers.  
-- Best for **persistent storage** across container restarts.  
-- Example: `docker volume create my_volume`  
-
-#### **3. Anonymous Volumes**  
-- Similar to named volumes but without a specific name.  
-- Docker automatically assigns a random name.  
-- Used when temporary storage is needed without manual management.  
-- Example: `docker run -v /container/path my-app` (without specifying a host path or volume name).
-
 ### **Docker Networking**  
 Enable communication between containers or expose a container for external access over the internet.
 #### **1. Bridge Network (Single Host)**  

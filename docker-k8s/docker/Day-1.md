@@ -1,6 +1,6 @@
 # Deployment in Physical Virtual and containers
 
-Earlier, applications were run on physical machines, but there was no mechanism to limit how much system resources an application could consume. So, if one application used more resources, it could cause performance issues or even crash other applications. The solution was to run each application on a separate physical machine, but this was a costly approach.
+- **PhysicalMachines** Earlier, applications were run on physical machines, but there was no mechanism to limit how much system resources an application could consume. So, if one application used more resources, it could cause performance issues or even crash other applications. The solution was to run each application on a separate physical machine, but this was a costly approach.
 
 - **Virtualization**: Creates multiple virtual machines (VMs) on a single host, each with its own OS.
 To overcome the cost of running each application on a separate physical machine, we can use virtualization. Virtualization allows us to create independent VMs on a physical machine, providing strong isolation between the VMs. This helps in utilizing the physical machine's resources more effectively. It's hardware-level isolation, and each VM has its own dedicated OS. With the process of application modernization, the backend was decoupled into multiple components, and I don't need a full OS for each component. Running each component in a separate VM leads to resource underutilization, and since each VM has a full OS, scaling and boot times can take minutes.
@@ -116,3 +116,7 @@ Cgroups control resource usage (CPU, memory, disk I/O) for containers to prevent
 - Example: Running multiple **Node.js and Python apps** in different containers on the same host.  
 
 ✅ **Isolation prevents interference between applications** while allowing them to run efficiently. 🚀
+
+
+
+# 

@@ -1,6 +1,6 @@
 ## What is Terraform and Why Do We Need It?
 
-When it comes to creating and managing infrastructure manually, it often becomes a time-consuming and error-prone task. Let me explain why:
+When it comes to creating and managing infrastructure manually, it often becomes a time-consuming and error-prone task.
 
 - **Manual Infrastructure Management Issues:**
   - Creating infrastructure manually takes a lot of time and effort.
@@ -60,4 +60,35 @@ With Terraform, building and managing cloud infrastructure is no longer a manual
   - You can also **version control** the state file, making it easy to track changes and roll back if necessary.
 
 In simple terms, storing the state file remotely improves **collaboration**, **reliability**, and **consistency** in managing infrastructure across teams.
+
+
+
+
+
+
+
+
+# Just points
+Infrastructure = compute,storage,netowork and DBs ....
+- Manually provision infra consuming time and prone to error
+- There no tracking mechanism who made what changes[auditiong]
+- Hard to replicate same infra across different environemnts
+- There is no collabration b/w team members
+- Maintain the inventory of reosurces that you're created part of the infra creation
+
+Why don't we maintain infrastructure form of code
+
+- The first benefit of infra as code you can vcs,enable collaboration and improves auditing capabilities
+- Easy to replicate smae infra across the different environments
+- provision infra creation and deletion we can do in very fast it cut down the costs of long running services
+- we can easily do cost analysis
+
+What and Why Terraform?
+- is one of the IAC tool
+- Able to create infrastructure different cloud platforms
+- Terraform maintains the statefile to track resources that are provisionied through TF
+- They are come with HCL language to create resources in the cloud
+- They are come up the concept like modules reuse the infra code
+- create immuntable infrastructure instead of modifying existence resource create new resource
+
 
