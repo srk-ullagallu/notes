@@ -1,7 +1,3 @@
-Here are detailed notes on **ReplicaSet**, **Replication Controller**, and **Deployment**, along with examples for each.
-
----
-
 # **1. ReplicaSet (RS)**  
 
 ### **Definition:**  

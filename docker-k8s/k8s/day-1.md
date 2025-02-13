@@ -103,3 +103,6 @@ In **Kubernetes**, container states inside a Pod:
 ✅ **Unknown** → Status can't be determined 
 
 
+
+
+

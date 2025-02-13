@@ -199,8 +199,5 @@ A **Pod** is the smallest deployable unit in Kubernetes. It is an abstraction th
 This guide provides a comprehensive overview of Pods, their lifecycle, troubleshooting steps, and best practices to ensure smooth operation in Kubernetes clusters.
 
 
-# What is pod
-# Difference b/w pod and container
-# Can you explain pod lifecycle
-# 
+
 
