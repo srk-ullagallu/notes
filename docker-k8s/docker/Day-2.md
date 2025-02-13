@@ -158,8 +158,8 @@
 - Used when temporary storage is needed without manual management.  
 - Example: `docker run -v /container/path my-app` (without specifying a host path or volume name).
 
-### **Docker Networking (Simple Explanation)**  
-
+### **Docker Networking**  
+Enable communication between containers or expose a container for external access over the internet.
 #### **1. Bridge Network (Single Host)**  
 - **Default Bridge Network**  
   - Automatically created by Docker.  
@@ -219,23 +219,6 @@
   - The container **still needs `-p` or `-P`** to be accessible externally.  
 
 ✅ **Use `-p` for fixed ports and `-P` for automatic port assignment!** 🚀
-
-
-
-Yes! Here are a few more **important** Docker best practices:  
-
-- ✅ **Use official images** – They are secure and well-maintained.  
-- ✅ **Use small base images** – Reduces image size and attack surface (`alpine`, `distroless`).  
-- ✅ **Use multi-stage builds** – Keeps final images small by removing unnecessary dependencies.  
-- ✅ **Use a custom user instead of root** – Improves security by restricting privileges.  
-- ✅ **Minimize layers** – Combine `RUN` commands to reduce unnecessary layers.  
-- ✅ **Use `.dockerignore`** – Exclude unnecessary files (`node_modules`, `.git`, etc.).  
-- ✅ **Tag images properly** – Avoid using `latest`; use specific versions (`nginx:1.25`).  
-- ✅ **Keep containers stateless** – Store data in volumes instead of inside containers.  
-- ✅ **Limit container privileges** – Use `--read-only`, `--cap-drop`, and `seccomp` profiles.  
-- ✅ **Regularly scan images** – Use tools like `trivy` or `docker scan` for vulnerabilities.  
-
-These ensure **security, performance, and efficient builds**! 🚀
 
 
 
