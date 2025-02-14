@@ -45,6 +45,8 @@
 - volumes
   - static volume provisioning[pv,pvc]
   - dynamic volume provisioning[sc]
+- hostpath[][DaemonSet][2]
+- emtydir
 # Day-8[Kops][27-02-2025]
 - initcontainers
 - configmap,secrets
@@ -69,16 +71,18 @@
 - ingress
 - Annotations
 - create ingress for instana and expense
+- ExternalDNS Controller
 # Day-15[EKS][10-03-2025]
 - HashiCorpVault
 - ESO Operator
-- ExternalDNS
 # Day-16[Terraform-EKS][11-03-2025]
 - ClusterUpGradation Blue-Green Approach
 # Day-17[EKS][12-03-2025]
 - Monitoring[Prometheus&Grafana]
 # Day-18[EKS][13-03-2025]
 - Logging[EFK]
+
+
 ## CI/CD
 # Day-19[Jenkins][14-03-2025]
 - SDLC
@@ -150,3 +154,14 @@
 **Governance**
 - IAM
 
+**ContainerOrchsetration**
+- ECS
+- EKS
+- ECR
+
+**Observability**
+- CloudTrail
+- CloudWatch
+- EventBridge
+
+APIGW
