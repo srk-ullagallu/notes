@@ -19,7 +19,6 @@ Image Creation: You can create Docker images, which are lightweight and portable
 - **Efficient Resource Usage** – Containers share the host OS kernel, making them lightweight and fast compared to virtual machines (VMs).  
 - **Scalability** – Easily scale applications up or down based on demand.  
 - **Consistency** – The same image runs on all environments, reducing compatibility issues.
-**image & container**
 An image is a read-only template. When you execute an image, it creates a container, which is a lightweight, running instance of that image. The container has its own set of resources.
 
 Linux kernel creates an instance of that program in memory, assigns it resources, and gives it a unique Process ID (PID)—this is called a process
@@ -116,7 +115,3 @@ Cgroups control resource usage (CPU, memory, disk I/O) for containers to prevent
 - Example: Running multiple **Node.js and Python apps** in different containers on the same host.  
 
 ✅ **Isolation prevents interference between applications** while allowing them to run efficiently. 🚀
-
-
-
-# 
