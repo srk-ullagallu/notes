@@ -23,6 +23,12 @@ CMD ["bash"]
 ```
 
 This ensures the container runs with limited permissions, reducing security risks. Avoid running containers as root unless absolutely necessary.
+
+**When to Use ENTRYPOINT** 
+- When the container must always run a specific application (e.g., nginx, mysqld, etc.).
+- When you want to ensure the container runs a single, well-defined process.
+**When to Use CMD**
+- When you want a default command but allow users to override it.
 ---
 
 Docker images are made up of multiple layers. Each layer represents a change made during the build process.  
