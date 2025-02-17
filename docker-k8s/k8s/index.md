@@ -1,19 +1,22 @@
 ### Containerization&Orchestration
-# Day-1[docker][17-02-2025]
+# Day-1[docker][20-02-2025]
 - physical,virtual and containers
-- namespaces and cGroups[Linux Kernal Features]
 - Docker
 - Containerization
 - Docker Architecture
 - Container & life cycle
+- namespaces and cGroups[Linux Kernal Features]
 - Basic Docker Commands
   - [logs,inspect,stats,run,rmi,rm,stop,pause,unpause,prune,system]
-# Day-2[18-02-2025]
+
+# Day-2[21-02-2025]
 - Dockerfile instructions
+- Expense Project Dockerization
 - Instana Project Dockerization
 - Docker Layers
-- Docker-Compose
-# Day-3[19-02-2025]
+- Docker Compose
+
+# Day-3[22-02-2025]
 - volumes
   - named & Annoymous volumes
   - BindMounts
@@ -21,66 +24,83 @@
   - Bridge Network[Default&Custom]
   - host
   - none
-# Day-4[20-02-2025]
+- Docker Compose to run expense and instana
+
+# Day-4[23-02-2025]
 - Docker Best Practices
 - ECS[expense]
 
-# Day-5[KillerKoda][k8s][[21-02-2025]]
+# Day-5[24-02-2025][monitoring]
+- Prometheus&Grafana
+- node_exporter
+- ec2 labels to dynamic monitoring
+
+# Day-6[k8s][[27-02-2025]]
 - What is k8s and Why
 - K8s Architecture
 - pods
+- init containers
 - Labels & Selectors
 - NameSpaces
-# Day-6[EKS][24-02-2025]
+# Day-6[28-02-2025]
 - ReplicaSet & Replication Controller
 - Deployment
 - Services
   - ClusterIP
   - NodePort
   - LoadBalancer
-# Day-7[EKS][25-02-2025]
+  - ExternalName
+# Day-7[03-03-2025]
+- configmap
+- secrets
+- probes
+- Resource Management[requests,limits]
+- HPA
+# Day-8[04-03-2025]
+- k8s manifest files creation expense
+- HELM charts for expense
+# Day-7[EKS][05-03-2025]
 - StatefulSet
 - Services
   - Headless  
 - volumes
   - static volume provisioning[pv,pvc]
   - dynamic volume provisioning[sc]
-- hostpath[][DaemonSet][2]
+- hostpath
 - emtydir
-# Day-8[Kops][27-02-2025]
-- initcontainers
-- configmap,secrets
-- probes
-# Day-9[kops][28-02-2025]
-- instana,expense project manifestization
-- HPA
-# Day-10[kops][03-03-2025]
-- HELM[instana]
-# Day-11[kops][04-03-2025]
-- ServiceAccount
-- RBAC
-- Network Policys
-# Day-12[kops][05-03-2025]
-- Limit Ranges
-- ResourceQuotas
-# Day-13[Advance Scheduling][kops][06-03-2025]
+# Day-8[Kops][06-03-2025]
+- k8s manifest files for instana
+- HELM Charts for instana
+# Day-9[kops][Advance Scheduling][07-03-2025]
 - nodeSelector
 - Affinity & Anti-Affinity
 - Taints & Tolerations
-# Day-14[EKS][07-03-2025]
+
+# Day-10[EKS][Security][10-02-2025]
+- ServiceAccount
+- RBAC
+- Network Policys
+# Day-11[EKS][11-03-2025]
 - ingress
 - Annotations
 - create ingress for instana and expense
 - ExternalDNS Controller
-# Day-15[EKS][10-03-2025]
+# Day-12[EKS][12-03-2025]
+- Limit Ranges
 - HashiCorpVault
 - ESO Operator
-# Day-16[Terraform-EKS][11-03-2025]
+# Day-13[EKS-Terraform][13-03-2025]
 - ClusterUpGradation Blue-Green Approach
-# Day-17[EKS][12-03-2025]
+# Day-14[EKS][14-03-2025]
 - Monitoring[Prometheus&Grafana]
-# Day-18[EKS][13-03-2025]
+# Day-15[EKS][17-03-2025]
 - Logging[EFK]
+# Day-16[18-03-2025]
+
+# Day-17[19-03-2025]
+
+# Day-18[20-03-2025]
+
 
 
 ## CI/CD

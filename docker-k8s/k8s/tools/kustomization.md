@@ -1,7 +1,3 @@
-Here are your notes in a clean and simple format:  
-
----
-
 ### Kustomize vs. Helm in Kubernetes  
 
 #### Problem with Direct Kubernetes Manifests  
@@ -68,6 +64,4 @@ kubectl apply -k overlays/dev         # Apply dev environment configuration
 | Built into `kubectl` | ✅ | ❌ |
 
 - **Helm** is more powerful for managing deployments but adds complexity.  
-- **Kustomize** is a lightweight, template-free alternative but has limitations compared to Helm.  
-
----
+- **Kustomize** is a lightweight, template-free alternative but has limitations compared to Helm.

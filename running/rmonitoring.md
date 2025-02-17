@@ -133,6 +133,26 @@ elastic search is a searchable DB
 Production grade prometheus
 Production grade elastic search
 
+- How can i install elastic search and kibana in vm
+  - memory intensive instances r7i.large latest gen comes with low cost
+- ELK installation
+
+# 10-9-2024
+
+beats[input]   -----> Logstash[output]  -----> Elastic Search ---> Kibana
+
+
+transactional logs[business logs]
+non-transactional logs[system logs]
+
+grok
+
+# 11-9-2024
+
+
+
+
+
 # 18-9-24[newrelic]
 
 
