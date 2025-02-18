@@ -1,40 +1,3 @@
-### Containerization&Orchestration
-# Day-1[docker][20-02-2025]
-- physical,virtual and containers
-- Docker
-- Containerization
-- Docker Architecture
-- Container & life cycle
-- namespaces and cGroups[Linux Kernal Features]
-- Basic Docker Commands
-  - [logs,inspect,stats,run,rmi,rm,stop,pause,unpause,prune,system]
-
-# Day-2[21-02-2025]
-- Dockerfile instructions
-- Expense Project Dockerization
-- Instana Project Dockerization
-- Docker Layers
-- Docker Compose
-
-# Day-3[22-02-2025]
-- volumes
-  - named & Annoymous volumes
-  - BindMounts
-- Networking
-  - Bridge Network[Default&Custom]
-  - host
-  - none
-- Docker Compose to run expense and instana
-
-# Day-4[23-02-2025]
-- Docker Best Practices
-- ECS[expense]
-
-# Day-5[24-02-2025][monitoring]
-- Prometheus&Grafana
-- node_exporter
-- ec2 labels to dynamic monitoring
-
 # Day-6[k8s][[27-02-2025]]
 - What is k8s and Why
 - K8s Architecture
@@ -75,7 +38,6 @@
 - nodeSelector
 - Affinity & Anti-Affinity
 - Taints & Tolerations
-
 # Day-10[EKS][Security][10-02-2025]
 - ServiceAccount
 - RBAC
@@ -129,27 +91,20 @@
 # Day-24[19-03-2024]
 - Backup
 - RBAC
-
 # Day-25[20-03-2024]
 - CI
 - CD[ARGOCD][EKS]
-
 # Day-26[21-03-2024]
 - Deploy to VM
-
 # Day-27[24-03-2024]
 - Deploy to ECS
 - Deploy to S3
-
 # Day-28[25-03-2024]
 - GithubActions
 - Intro
 - GitHubActions Runner Setup
 - Basic CI/CD pipelines
 
-### Holidays[Sat,Sun]
-- Feb[15,16,22,23,26]
-- Mar[1,2,8,9,15,16,22,23,29,30]
 
 
 ### Cooking................on AWS
