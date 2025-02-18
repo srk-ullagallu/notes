@@ -1,16 +1,32 @@
-# Jenkins
 
-# FreeStyle Jobs
-# Coding the pipelines
-- scripted pipelines
+- SDLC Process
+- Waterfall model
+- agile methodology
+- Devops
+- CI/CD
+- Jenkins
+- control and agent node setup
+- freestyle jobs
 - declarative pipelines
+- scripted pipelines
+- Multi Branch Pipeline
 
-# Jenkins control plane and agent setup
+# Day-1
 
+# Day-2
 
-# SharedLibs
-# MultiBranch Pipelines
-# Backup
-# RBAC
+# Day-3
 
-# InterviewQuestions
+# Day-4
+
+# Day-5
+
+# Day-6
+
+# Day-7
+
+# Day-8
+
+# Day-9
+
+# Day-10

@@ -1,6 +1,9 @@
 
 # 20-9-24
 
+automating process of build and test and deploy where developers frequently merge their code into central repo this process ensure early bug detection and improves the code quality and fastning the software releases
+
+
 `CI` Automating the integration of code changes from multiple contributors into a single software project during development developers
 merge their code changes frequently to central repo where build and tests are happend for each and every commit pipeline should run
 
@@ -44,6 +47,8 @@ So the pipeline that should support all the above scenarios
 - Tags should be detected
 
 After every detect the pipeline should run for its respective commit
+
+In interviews says using bit bucket
 
 
 "We use a multibranch pipeline in Jenkins because, during development, developers often create multiple branches. As a DevOps engineer, it's not feasible to create a separate Jenkins pipeline for each branch. With the multibranch pipeline, Jenkins automatically detects branches containing a `Jenkinsfile` and triggers the CI/CD pipeline for each detected branch, ensuring continuous integration and delivery."
