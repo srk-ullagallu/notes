@@ -137,6 +137,11 @@ Production grade elastic search
   - memory intensive instances r7i.large latest gen comes with low cost
 - ELK installation
 
+beats - collects the logs
+logstash - convert the logs into desirable format
+ealsticsearch - searchable db
+kibana - visual 
+
 # 10-9-2024
 
 beats[input]   -----> Logstash[output]  -----> Elastic Search ---> Kibana
@@ -149,9 +154,12 @@ grok
 
 # 11-9-2024
 
+# 12-9-2024
+- create data views for all micro services
 
+# 14-9-2024
 
-
+# 16-9-2024
 
 # 18-9-24[newrelic]
 
