@@ -247,6 +247,23 @@ Istio - 57
 - method level restriction between micro services 
 - communication b/w component to componet plan communication happend
 
+# 23-10-24
+- kiali
+- CIRF install every linux have certificates
+
+# 25-10-24
+- istio authorization policy
+
+# 28-10-24
+
+# 30-10-24
+- istio gateway
+
+# 04-10-24
+- sonarqube
+
+# 05-10-24
+- Byte Byte Go
 
 
 
