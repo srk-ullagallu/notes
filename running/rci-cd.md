@@ -163,12 +163,96 @@ only deployment context is only used
 # 1-10-24
 
 github actions
+- creating github repos using terraform
+- create preotection rules for environemnt wise in github
+- Pipelines ask me for review to deploy QA,PRE-PROD,PROD in GithubActions
+- How Can I trigger My Jenkins CI Pipeline to GithubActions CD pipeline
+
+- deployment
 
 # 2-10-24
 
-githuactions argocd deploymnt pipeline
+- githuactions argocd deploymnt pipeline
+- install ARGOCD cli in github runner
+- dynamic name for github workflow
+- github actions reusable workflows
 
-# 
+- deployment
+
+
+# 4-10-24
+- deployment all applications
+
+# 7-10-24
+
+- Load Test
+- new relic integration with app for block box metrics
+
+# 8-10-24
+- infrastructure secure or not
+- scan the terraform code [trivy]
+- /usr/local/bin/tfsec infra-dev-eks
+
+# 10-10-24
+
+- KMS = aws has h/w so host the machines in h/w there is a chance to read the data so aws offers kms to encrypt the data
+- VPC flow logs
+
+
+# 11-10-24
+- KMS for cloudwatch logs
+- EKS node group launch template [1:01:]
+
+# 14-10-24
+- Infrastructure
+- EKS cluster
+- OS
+- Container
+
+image scanners
+- Amazon inspector
+- Nessus vulnerability scanner
+- twistlock defender
+
+start insurence company data breach
+
+CISO
+
+# 15-10-2024
+- aws_ami_from_instance
+- packer
+- inspector
+
+# 17-10-2024
+- k8s cluster security
+- twistlock defender
+- Guard Duty
+
+- Falco
+- securing pod 
+
+- kubeaudit
+
+# 18-10-24
+- security readonly file system by pod
+
+# 21-10-24
+- if you include twist lock to scan the container in dev pipeline or any security pipeline
+- k8s manifestfiles security using trivy
+
+# 22-10-24
+
+Istio - 57 
+
+- method level restriction between micro services 
+- communication b/w component to componet plan communication happend
+
+
+
+
+
+
+
 
 
 1. SCM checkout
