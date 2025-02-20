@@ -2,13 +2,13 @@
 
 - **PhysicalMachines** Earlier, applications were run on physical machines, but there was no mechanism to limit how much system resources an application could consume. So, if one application used more resources, it could cause performance issues or even crash other applications. The solution was to run each application on a separate physical machine, but this was a costly approach.
 
-- **Virtualization**: Creates multiple virtual machines (VMs) on a single host, each with its own OS.
+- **Virtualization[vms]**: Creates multiple virtual machines (VMs) on a single host, each with its own OS.
 To overcome the cost of running each application on a separate physical machine, we can use virtualization. Virtualization allows us to create independent VMs on a physical machine, providing strong isolation between the VMs. This helps in utilizing the physical machine's resources more effectively. It's hardware-level isolation, and each VM has its own dedicated OS. With the process of application modernization, the backend was decoupled into multiple components, and I don't need a full OS for each component. Running each component in a separate VM leads to resource underutilization, and since each VM has a full OS, scaling and boot times can take minutes.
 
-- **Containerization**: Runs multiple isolated applications using a shared OS kernel, making it more lightweight and efficient.
+- **Containers**: Runs multiple isolated applications using a shared OS kernel, making it more lightweight and efficient.
 Containerization for running microservices doesn't require a full OS—just the bare minimum OS, the app, its dependencies, and system libraries. Containers don't have a full OS; they use the host machine's OS as a read-only copy to run. This minimal OS setup brings benefits like faster boot-up and quicker scaling. It's a software-level virtualization. In the microservices world, development happens rapidly for faster releases, and containers are easy to move across platforms. They're also faster to spin up and scale.
 
-Virtualization and containerization are two approaches to running multiple applications on the same physical hardware efficiently.
+`Virtualization` and `containerization` are two approaches to running multiple applications on the same physical hardware efficiently.
 ---
 # Docker
 Docker is a Containerization tools allows you to package applications and their dependencies into containers, ensuring consistency across different environments.

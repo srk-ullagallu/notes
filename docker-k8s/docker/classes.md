@@ -1,5 +1,5 @@
 # Day-1
-- Deployment on physical,vm and containers and it challenges
+- Deployment on physical,vm and containers and it's challenges
 - Containerization and Docker
 - Docker Architecture
 - Container & LifeCycle
@@ -11,7 +11,7 @@
 - Expense Project Dockerization
 - Instana Project Dockerization
 - Docker Layers
-- Docker Compos
+- Docker Compose
 # Day-3
 - volumes
   - named & Annoymous volumes

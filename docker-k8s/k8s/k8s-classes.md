@@ -2,8 +2,9 @@
 - What is k8s and Why
 - K8s Architecture
 - pods
-- Labels & Selectors
 - NameSpaces
+- Labels & Selectors
+- Annotations
 # Day-2[kops]
 - ReplicaSet & Replication Controller
 - Deployment

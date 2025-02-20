@@ -75,3 +75,19 @@ The project improved system scalability, observability, and deployment efficienc
 
 
 
+
+
+
+# Deployment Methods
+1. Manual Deployment → Manually copying files or running scripts.
+2. Automated Deployment → Using CI/CD tools like GitHub Actions, Jenkins, or ArgoCD.
+3. Rolling Deployment → Updating services gradually to avoid downtime.
+4. Blue-Green Deployment → Running two versions (Blue = old, Green = new) to ensure zero-downtime.
+5. Canary Deployment → Deploying to a small percentage of users before full rollout.
+
+
+
+
+
+
+
