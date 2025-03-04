@@ -30,33 +30,58 @@ Containers are ephemeral, meaning they don’t persist data after termination or
    - `ro` (read-only) ensures the container cannot modify host files.  
    - If `rw` (read-write) is used, a vulnerable container can get full control over the host filesystem.
 
-# docker compose  
-Docker Compose is a tool to define and manage **multi-container** Docker applications using a `docker-compose.yml` file.
 
-### Why Use Docker Compose?  
-- **Simplifies multi-container setup** (e.g., app + database).  
-- **Easy to configure** services, networks, and volumes.  
-- **Single command to start/stop** all services (`docker-compose up/down`).  
+# Docker-Compose
+Docker Compose is a tool that helps you define and manage multi-container Docker applications using a simple YAML file (docker-compose.yml). Instead of running multiple docker run commands manually, you can define your entire application stack in one file and start everything with a single command.
 
-### Basic `docker-compose.yml` Example  
+Why Use Docker Compose?
+1. Easier management – Define all services (databases, backend, frontend, etc.) in one place.
+2. Automatic networking – All services in a Compose file are in the same network by default.
+3. Simplified commands – Instead of multiple docker run commands, just use docker-compose up.
+4. Scalability – Easily scale services (docker-compose up --scale backend=3).
+5. Environment configuration – Use .env files for variables.
+
+Basic Example (docker-compose.yml):
 ```yaml
-version: "3.8"
+version: "3.9"
 
 services:
-  app:
-    image: myapp
+  backend:
+    image: my-backend-image
     ports:
-      - "8080:80"
-    depends_on:
-      - db
+      - "5000:5000"
+    networks:
+      - app_network
 
-  db:
-    image: mysql
+  database:
+    image: mysql:latest
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: testdb
-```
+      MYSQL_DATABASE: mydb
+    networks:
+      - app_network
 
+networks:
+  app_network:
+```
+This defines:
+- A backend service running on port 5000.
+- A MySQL database with credentials.
+- A custom network app_network connecting both services.
+
+How to Use Docker Compose:
+1. Start services  
+   ```sh
+   docker-compose up -d
+   ```
+2. View running containers  
+   ```sh
+   docker-compose ps
+   ```
+3. Stop services  
+   ```sh
+   docker-compose down
+   ```
 ### Key Commands  
 - `docker-compose up -d` → Start all services in detached mode.  
 - `docker-compose down` → Stop and remove containers.  

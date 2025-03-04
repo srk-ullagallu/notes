@@ -1,5 +1,4 @@
 # dockerfile instructions
-
 - `FROM` - Sets the base image  
 - `WORKDIR` - Sets the working directory inside the container  
 - `RUN` - Executes commands during the image build  
